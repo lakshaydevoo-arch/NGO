@@ -1,260 +1,447 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Root & Rise Foundation — Dashboard</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Root & Rise Foundation — Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="brand">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+            <path
+              d="M15 27C15 27 6 21.5 6 13.5C6 8.8 9.6 5 15 3C20.4 5 24 8.8 24 13.5C24 21.5 15 27 15 27Z"
+              fill="#E3A23C"
+            />
+            <path
+              d="M15 27V13"
+              stroke="#33473C"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+            <path
+              d="M15 18C15 18 10 16.5 10 12.5"
+              stroke="#33473C"
+              stroke-width="1.4"
+              stroke-linecap="round"
+            />
+            <path
+              d="M15 22C15 22 20 20.5 20 16"
+              stroke="#33473C"
+              stroke-width="1.4"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div class="brand-name">Sammriddhi Trust<span>Foundation</span></div>
+        </div>
 
-<div class="app">
+        <nav>
+          <a class="nav-item active"
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <rect
+                x="1"
+                y="1"
+                width="6"
+                height="6"
+                rx="1.2"
+                stroke="currentColor"
+                stroke-width="1.3"
+              />
+              <rect
+                x="9"
+                y="1"
+                width="6"
+                height="6"
+                rx="1.2"
+                stroke="currentColor"
+                stroke-width="1.3"
+              />
+              <rect
+                x="1"
+                y="9"
+                width="6"
+                height="6"
+                rx="1.2"
+                stroke="currentColor"
+                stroke-width="1.3"
+              />
+              <rect
+                x="9"
+                y="9"
+                width="6"
+                height="6"
+                rx="1.2"
+                stroke="currentColor"
+                stroke-width="1.3"
+              /></svg
+            >Overview</a
+          >
+          <a class="nav-item"
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M2 13V6l6-3 6 3v7"
+                stroke="currentColor"
+                stroke-width="1.3"
+              />
+              <path
+                d="M6 13V9h4v4"
+                stroke="currentColor"
+                stroke-width="1.3"
+              /></svg
+            >Programs</a
+          >
+          <a class="nav-item"
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle
+                cx="8"
+                cy="5"
+                r="2.6"
+                stroke="currentColor"
+                stroke-width="1.3"
+              />
+              <path
+                d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5"
+                stroke="currentColor"
+                stroke-width="1.3"
+              /></svg
+            >Beneficiaries</a
+          >
+          <a class="nav-item"
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M8 2c2.5 1 4 3 4 5.5C12 11 8 14 8 14S4 11 4 7.5C4 5 5.5 3 8 2Z"
+                stroke="currentColor"
+                stroke-width="1.3"
+              /></svg
+            >Donors</a
+          >
+          <a class="nav-item"
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M3 2h7l3 3v9H3V2Z"
+                stroke="currentColor"
+                stroke-width="1.3"
+              />
+              <path
+                d="M5.5 8h5M5.5 10.5h5"
+                stroke="currentColor"
+                stroke-width="1.2"
+              /></svg
+            >Field Reports</a
+          >
+          <a class="nav-item"
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <circle
+                cx="8"
+                cy="8"
+                r="2"
+                stroke="currentColor"
+                stroke-width="1.3"
+              />
+              <path
+                d="M8 1.5v1.8M8 12.7v1.8M14.5 8h-1.8M3.3 8H1.5M12.5 3.5l-1.3 1.3M4.8 11.2l-1.3 1.3M12.5 12.5l-1.3-1.3M4.8 4.8L3.5 3.5"
+                stroke="currentColor"
+                stroke-width="1.2"
+                stroke-linecap="round"
+              /></svg
+            >Settings</a
+          >
+        </nav>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="brand">
-      <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-        <path d="M15 27C15 27 6 21.5 6 13.5C6 8.8 9.6 5 15 3C20.4 5 24 8.8 24 13.5C24 21.5 15 27 15 27Z" fill="#E3A23C"/>
-        <path d="M15 27V13" stroke="#33473C" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M15 18C15 18 10 16.5 10 12.5" stroke="#33473C" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M15 22C15 22 20 20.5 20 16" stroke="#33473C" stroke-width="1.4" stroke-linecap="round"/>
-      </svg>
-      <div class="brand-name">Root & Rise<span>Foundation</span></div>
+        <div class="sidebar-footer">
+          <strong>UTTAR PRADESH REGION</strong>
+          14 districts &middot; 62 field volunteers
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main>
+        <div class="topbar">
+          <div>
+            <div class="eyebrow">Overview — Kharif reporting cycle</div>
+            <h1>Good morning, <em>Yogesh</em></h1>
+          </div>
+          <div class="topbar-meta">
+            Tuesday, 7 July 2026<br />
+            Last field sync: 41 minutes ago
+          </div>
+        </div>
+
+        <!-- STAT STRIP -->
+        <section class="stat-strip">
+          <div class="stat-card">
+            <div class="stat-label">Beneficiaries reached</div>
+            <div class="stat-value">18,420</div>
+            <div class="stat-delta">▲ 6.2% this quarter</div>
+          </div>
+          <div class="stat-card marigold">
+            <div class="stat-label">Funds raised (FY26)</div>
+            <div class="stat-value">₹42.6L</div>
+            <div class="stat-delta">▲ 12.8% vs target</div>
+          </div>
+          <div class="stat-card sky">
+            <div class="stat-label">Villages covered</div>
+            <div class="stat-value">86</div>
+            <div class="stat-delta">▲ 4 new this month</div>
+          </div>
+          <div class="stat-card clay">
+            <div class="stat-label">Open field cases</div>
+            <div class="stat-value">23</div>
+            <div class="stat-delta down">▼ needs review: 5 overdue</div>
+          </div>
+        </section>
+
+        <!-- SIGNATURE: HARVEST BARS -->
+        <section class="harvest-panel">
+          <div class="section-head">
+            <h2>Programs — sown to harvested</h2>
+            <a href="#">View all programs</a>
+          </div>
+
+          <div class="harvest-row">
+            <div class="harvest-name">
+              Clean Water Access<small>18 villages · UP</small>
+            </div>
+            <div class="harvest-track">
+              <div class="harvest-fill" style="width: 82%"></div>
+              
+            </div>
+            <div>
+              <div class="harvest-pct">82%</div>
+              <div class="harvest-stage">Harvested</div>
+            </div>
+          </div>
+
+          <div class="harvest-row">
+            <div class="harvest-name">
+              Girls' Primary Education<small>32 villages · UP</small>
+            </div>
+            <div class="harvest-track">
+              <div class="harvest-fill" style="width: 58%"></div>
+              
+            </div>
+            <div>
+              <div class="harvest-pct">58%</div>
+              <div class="harvest-stage">Growing</div>
+            </div>
+          </div>
+
+          <div class="harvest-row">
+            <div class="harvest-name">
+              Mobile Health Camps<small>21 villages · UP</small>
+            </div>
+            <div class="harvest-track">
+              <div class="harvest-fill" style="width: 35%"></div>
+             
+            </div>
+            <div>
+              <div class="harvest-pct">35%</div>
+              <div class="harvest-stage">Sprouting</div>
+            </div>
+          </div>
+
+          <div class="harvest-row">
+            <div class="harvest-name">
+              Farmer Skilling Cohort<small>15 villages · UP</small>
+            </div>
+            <div class="harvest-track">
+              <div class="harvest-fill" style="width: 12%"></div>
+             
+            </div>
+            <div>
+              <div class="harvest-pct">12%</div>
+              <div class="harvest-stage">Sown</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CHART + FEED -->
+        <section class="grid-2">
+          <div class="panel">
+            <div class="section-head">
+              <h2>Donations, last 8 months</h2>
+              <a href="#">Export CSV</a>
+            </div>
+            <div class="chart">
+              <div class="bar-col">
+                <div class="bar" style="height: 38%"></div>
+                <div class="bar-month">Dec</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar" style="height: 52%"></div>
+                <div class="bar-month">Jan</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar" style="height: 44%"></div>
+                <div class="bar-month">Feb</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar" style="height: 61%"></div>
+                <div class="bar-month">Mar</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar" style="height: 57%"></div>
+                <div class="bar-month">Apr</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar" style="height: 70%"></div>
+                <div class="bar-month">May</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar peak" style="height: 96%"></div>
+                <div class="bar-month">Jun</div>
+              </div>
+              <div class="bar-col">
+                <div class="bar" style="height: 64%"></div>
+                <div class="bar-month">Jul</div>
+              </div>
+            </div>
+            <div class="chart-legend">
+              <span
+                ><i class="dot" style="background: var(--moss)"></i>Monthly
+                total</span
+              >
+              <span
+                ><i class="dot" style="background: var(--marigold)"></i>Peak
+                month (annual gala)</span
+              >
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="section-head">
+              <h2>Field activity</h2>
+              <a href="#">View log</a>
+            </div>
+
+            <div class="feed-item">
+              <div class="feed-dot"></div>
+              <div>
+                <div class="feed-text">
+                  <b>Ramesh K.</b> logged 3 new borewell installations in
+                  Bulandshahr block
+                </div>
+                <span class="feed-time">18 minutes ago</span>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="feed-dot" style="background: var(--marigold)"></div>
+              <div>
+                <div class="feed-text">
+                  <b>Priya S.</b> closed enrollment for 40 students, Meerut
+                  cohort
+                </div>
+                <span class="feed-time">1 hour ago</span>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="feed-dot" style="background: var(--clay)"></div>
+              <div>
+                <div class="feed-text">
+                  Health camp in Hapur flagged low turnout — needs follow-up
+                </div>
+                <span class="feed-time">3 hours ago</span>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="feed-dot"></div>
+              <div>
+                <div class="feed-text">
+                  <b>Anonymous donor</b> contributed ₹1,50,000 toward water
+                  program
+                </div>
+                <span class="feed-time">Yesterday, 6:40 PM</span>
+              </div>
+            </div>
+            <div class="feed-item">
+              <div class="feed-dot"></div>
+              <div>
+                <div class="feed-text">
+                  <b>Field team Ghaziabad</b> submitted quarterly impact survey
+                </div>
+                <span class="feed-time">Yesterday, 11:05 AM</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- DONOR TABLE -->
+        <section class="panel">
+          <div class="section-head">
+            <h2>Recent contributions</h2>
+            <a href="#">View all donors</a>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Donor</th>
+                <th>Program</th>
+                <th>Type</th>
+                <th style="text-align: right">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="donor-name">
+                  Meera Agarwal<small>meera.a@gmail.com</small>
+                </td>
+                <td>Clean Water Access</td>
+                <td><span class="pill recurring">Recurring</span></td>
+                <td class="amount">₹5,000</td>
+              </tr>
+              <tr>
+                <td class="donor-name">
+                  TCS Foundation<small>Corporate CSR grant</small>
+                </td>
+                <td>Girls' Primary Education</td>
+                <td><span class="pill onetime">One-time</span></td>
+                <td class="amount">₹3,20,000</td>
+              </tr>
+              <tr>
+                <td class="donor-name">
+                  Vikram Nair<small>vik.nair@outlook.com</small>
+                </td>
+                <td>Mobile Health Camps</td>
+                <td><span class="pill recurring">Recurring</span></td>
+                <td class="amount">₹2,500</td>
+              </tr>
+              <tr>
+                <td class="donor-name">Anonymous</td>
+                <td>Clean Water Access</td>
+                <td><span class="pill onetime">One-time</span></td>
+                <td class="amount">₹1,50,000</td>
+              </tr>
+              <tr>
+                <td class="donor-name">
+                  Sunita Devi Trust<small>Local philanthropy</small>
+                </td>
+                <td>Farmer Skilling Cohort</td>
+                <td><span class="pill onetime">One-time</span></td>
+                <td class="amount">₹75,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
     </div>
 
-    <nav>
-      <a class="nav-item active"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/></svg>Overview</a>
-      <a class="nav-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 13V6l6-3 6 3v7" stroke="currentColor" stroke-width="1.3"/><path d="M6 13V9h4v4" stroke="currentColor" stroke-width="1.3"/></svg>Programs</a>
-      <a class="nav-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.3"/><path d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.3"/></svg>Beneficiaries</a>
-      <a class="nav-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2c2.5 1 4 3 4 5.5C12 11 8 14 8 14S4 11 4 7.5C4 5 5.5 3 8 2Z" stroke="currentColor" stroke-width="1.3"/></svg>Donors</a>
-      <a class="nav-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3V2Z" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 8h5M5.5 10.5h5" stroke="currentColor" stroke-width="1.2"/></svg>Field Reports</a>
-      <a class="nav-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.5v1.8M8 12.7v1.8M14.5 8h-1.8M3.3 8H1.5M12.5 3.5l-1.3 1.3M4.8 11.2l-1.3 1.3M12.5 12.5l-1.3-1.3M4.8 4.8L3.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Settings</a>
-    </nav>
-
-    <div class="sidebar-footer">
-      <strong>UTTAR PRADESH REGION</strong>
-      14 districts &middot; 62 field volunteers
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <main>
-    <div class="topbar">
-      <div>
-        <div class="eyebrow">Overview — Kharif reporting cycle</div>
-        <h1>Good morning, <em>Anjali</em></h1>
-      </div>
-      <div class="topbar-meta">
-        Tuesday, 7 July 2026<br>
-        Last field sync: 41 minutes ago
-      </div>
-    </div>
-
-    <!-- STAT STRIP -->
-    <section class="stat-strip">
-      <div class="stat-card">
-        <div class="stat-label">Beneficiaries reached</div>
-        <div class="stat-value">18,420</div>
-        <div class="stat-delta">▲ 6.2% this quarter</div>
-      </div>
-      <div class="stat-card marigold">
-        <div class="stat-label">Funds raised (FY26)</div>
-        <div class="stat-value">₹42.6L</div>
-        <div class="stat-delta">▲ 12.8% vs target</div>
-      </div>
-      <div class="stat-card sky">
-        <div class="stat-label">Villages covered</div>
-        <div class="stat-value">86</div>
-        <div class="stat-delta">▲ 4 new this month</div>
-      </div>
-      <div class="stat-card clay">
-        <div class="stat-label">Open field cases</div>
-        <div class="stat-value">23</div>
-        <div class="stat-delta down">▼ needs review: 5 overdue</div>
-      </div>
-    </section>
-
-    <!-- SIGNATURE: HARVEST BARS -->
-    <section class="harvest-panel">
-      <div class="section-head">
-        <h2>Programs — sown to harvested</h2>
-        <a href="#">View all programs</a>
-      </div>
-
-      <div class="harvest-row">
-        <div class="harvest-name">Clean Water Access<small>18 villages · UP</small></div>
-        <div class="harvest-track">
-          <div class="harvest-fill" style="width:82%"></div>
-          <svg class="harvest-seed" style="left:82%" viewBox="0 0 16 16"><path d="M8 14V6M8 9C8 9 5 8 5 5M8 11C8 11 11 10 11 7" stroke="#33473C" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-        </div>
-        <div>
-          <div class="harvest-pct">82%</div>
-          <div class="harvest-stage">Harvested</div>
-        </div>
-      </div>
-
-      <div class="harvest-row">
-        <div class="harvest-name">Girls' Primary Education<small>32 villages · UP</small></div>
-        <div class="harvest-track">
-          <div class="harvest-fill" style="width:58%"></div>
-          <svg class="harvest-seed" style="left:58%" viewBox="0 0 16 16"><path d="M8 14V6M8 9C8 9 5 8 5 5M8 11C8 11 11 10 11 7" stroke="#33473C" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-        </div>
-        <div>
-          <div class="harvest-pct">58%</div>
-          <div class="harvest-stage">Growing</div>
-        </div>
-      </div>
-
-      <div class="harvest-row">
-        <div class="harvest-name">Mobile Health Camps<small>21 villages · UP</small></div>
-        <div class="harvest-track">
-          <div class="harvest-fill" style="width:35%"></div>
-          <svg class="harvest-seed" style="left:35%" viewBox="0 0 16 16"><path d="M8 14V6M8 9C8 9 5 8 5 5M8 11C8 11 11 10 11 7" stroke="#33473C" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-        </div>
-        <div>
-          <div class="harvest-pct">35%</div>
-          <div class="harvest-stage">Sprouting</div>
-        </div>
-      </div>
-
-      <div class="harvest-row">
-        <div class="harvest-name">Farmer Skilling Cohort<small>15 villages · UP</small></div>
-        <div class="harvest-track">
-          <div class="harvest-fill" style="width:12%"></div>
-          <svg class="harvest-seed" style="left:12%" viewBox="0 0 16 16"><path d="M8 14V6M8 9C8 9 5 8 5 5M8 11C8 11 11 10 11 7" stroke="#33473C" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-        </div>
-        <div>
-          <div class="harvest-pct">12%</div>
-          <div class="harvest-stage">Sown</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHART + FEED -->
-    <section class="grid-2">
-      <div class="panel">
-        <div class="section-head">
-          <h2>Donations, last 8 months</h2>
-          <a href="#">Export CSV</a>
-        </div>
-        <div class="chart">
-          <div class="bar-col"><div class="bar" style="height:38%"></div><div class="bar-month">Dec</div></div>
-          <div class="bar-col"><div class="bar" style="height:52%"></div><div class="bar-month">Jan</div></div>
-          <div class="bar-col"><div class="bar" style="height:44%"></div><div class="bar-month">Feb</div></div>
-          <div class="bar-col"><div class="bar" style="height:61%"></div><div class="bar-month">Mar</div></div>
-          <div class="bar-col"><div class="bar" style="height:57%"></div><div class="bar-month">Apr</div></div>
-          <div class="bar-col"><div class="bar" style="height:70%"></div><div class="bar-month">May</div></div>
-          <div class="bar-col"><div class="bar peak" style="height:96%"></div><div class="bar-month">Jun</div></div>
-          <div class="bar-col"><div class="bar" style="height:64%"></div><div class="bar-month">Jul</div></div>
-        </div>
-        <div class="chart-legend">
-          <span><i class="dot" style="background:var(--moss)"></i>Monthly total</span>
-          <span><i class="dot" style="background:var(--marigold)"></i>Peak month (annual gala)</span>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="section-head">
-          <h2>Field activity</h2>
-          <a href="#">View log</a>
-        </div>
-
-        <div class="feed-item">
-          <div class="feed-dot"></div>
-          <div>
-            <div class="feed-text"><b>Ramesh K.</b> logged 3 new borewell installations in Bulandshahr block</div>
-            <span class="feed-time">18 minutes ago</span>
-          </div>
-        </div>
-        <div class="feed-item">
-          <div class="feed-dot" style="background:var(--marigold)"></div>
-          <div>
-            <div class="feed-text"><b>Priya S.</b> closed enrollment for 40 students, Meerut cohort</div>
-            <span class="feed-time">1 hour ago</span>
-          </div>
-        </div>
-        <div class="feed-item">
-          <div class="feed-dot" style="background:var(--clay)"></div>
-          <div>
-            <div class="feed-text">Health camp in Hapur flagged low turnout — needs follow-up</div>
-            <span class="feed-time">3 hours ago</span>
-          </div>
-        </div>
-        <div class="feed-item">
-          <div class="feed-dot"></div>
-          <div>
-            <div class="feed-text"><b>Anonymous donor</b> contributed ₹1,50,000 toward water program</div>
-            <span class="feed-time">Yesterday, 6:40 PM</span>
-          </div>
-        </div>
-        <div class="feed-item">
-          <div class="feed-dot"></div>
-          <div>
-            <div class="feed-text"><b>Field team Ghaziabad</b> submitted quarterly impact survey</div>
-            <span class="feed-time">Yesterday, 11:05 AM</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DONOR TABLE -->
-    <section class="panel">
-      <div class="section-head">
-        <h2>Recent contributions</h2>
-        <a href="#">View all donors</a>
-      </div>
-      <table>
-        <thead>
-          <tr><th>Donor</th><th>Program</th><th>Type</th><th style="text-align:right">Amount</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="donor-name">Meera Agarwal<small>meera.a@gmail.com</small></td>
-            <td>Clean Water Access</td>
-            <td><span class="pill recurring">Recurring</span></td>
-            <td class="amount">₹5,000</td>
-          </tr>
-          <tr>
-            <td class="donor-name">TCS Foundation<small>Corporate CSR grant</small></td>
-            <td>Girls' Primary Education</td>
-            <td><span class="pill onetime">One-time</span></td>
-            <td class="amount">₹3,20,000</td>
-          </tr>
-          <tr>
-            <td class="donor-name">Vikram Nair<small>vik.nair@outlook.com</small></td>
-            <td>Mobile Health Camps</td>
-            <td><span class="pill recurring">Recurring</span></td>
-            <td class="amount">₹2,500</td>
-          </tr>
-          <tr>
-            <td class="donor-name">Anonymous</td>
-            <td>Clean Water Access</td>
-            <td><span class="pill onetime">One-time</span></td>
-            <td class="amount">₹1,50,000</td>
-          </tr>
-          <tr>
-            <td class="donor-name">Sunita Devi Trust<small>Local philanthropy</small></td>
-            <td>Farmer Skilling Cohort</td>
-            <td><span class="pill onetime">One-time</span></td>
-            <td class="amount">₹75,000</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-  </main>
-</div>
-
-<script>
-  document.querySelectorAll('.nav-item').forEach(item=>{
-    item.addEventListener('click', ()=>{
-      document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));
-      item.classList.add('active');
-    });
-  });
-</script>
-
-</body>
+    <script>
+      document.querySelectorAll(".nav-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          document
+            .querySelectorAll(".nav-item")
+            .forEach((i) => i.classList.remove("active"));
+          item.classList.add("active");
+        });
+      });
+    </script>
+  </body>
 </html>
