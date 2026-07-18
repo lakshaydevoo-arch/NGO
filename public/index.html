@@ -16,7 +16,7 @@
       <!-- SIDEBAR -->
       <aside class="sidebar">
         <div class="brand">
-          <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
             <path
               d="M15 27C15 27 6 21.5 6 13.5C6 8.8 9.6 5 15 3C20.4 5 24 8.8 24 13.5C24 21.5 15 27 15 27Z"
               fill="#E3A23C"
@@ -45,7 +45,7 @@
 
         <nav>
           <a class="nav-item active"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <rect
                 x="1"
                 y="1"
@@ -85,7 +85,7 @@
             >Overview</a
           >
           <a class="nav-item"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path
                 d="M2 13V6l6-3 6 3v7"
                 stroke="currentColor"
@@ -99,7 +99,7 @@
             >Programs</a
           >
           <a class="nav-item"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <circle
                 cx="8"
                 cy="5"
@@ -115,7 +115,7 @@
             >Beneficiaries</a
           >
           <a class="nav-item"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path
                 d="M8 2c2.5 1 4 3 4 5.5C12 11 8 14 8 14S4 11 4 7.5C4 5 5.5 3 8 2Z"
                 stroke="currentColor"
@@ -124,7 +124,7 @@
             >Donors</a
           >
           <a class="nav-item"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path
                 d="M3 2h7l3 3v9H3V2Z"
                 stroke="currentColor"
@@ -138,7 +138,7 @@
             >Field Reports</a
           >
           <a class="nav-item"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <circle
                 cx="8"
                 cy="8"
@@ -159,6 +159,7 @@
         <div class="sidebar-footer">
           <strong>UTTAR PRADESH REGION</strong>
           14 districts &middot; 62 field volunteers
+          <button type="button" id="logoutBtn" class="logout-btn">Log out</button>
         </div>
       </aside>
 
@@ -167,10 +168,10 @@
         <div class="topbar">
           <div>
             <div class="eyebrow">Overview — Kharif reporting cycle</div>
-            <h1>Good morning, <em>Yogesh</em></h1>
+            <h1>Good morning, <em id="userName">...</em></h1>
           </div>
           <div class="topbar-meta">
-            Tuesday, 7 July 2026<br />
+            <span id="currentDate"></span><br />
             Last field sync: 41 minutes ago
           </div>
         </div>
@@ -433,15 +434,135 @@
       </main>
     </div>
 
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
     <script>
+      function formatINR(n) {
+        return '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+      }
+
+      function stageClass(stage) {
+        const map = { 'Sown': '', 'Sprouting': '', 'Growing': '', 'Harvested': '' };
+        return stage ? stage.toLowerCase() : '';
+      }
+
+      (async () => {
+        const user = await getCurrentUser();
+        if (!user) {
+          window.location.href = "/login.html";
+          return;
+        }
+        document.getElementById("userName").textContent = user.name;
+      })();
+
+      (() => {
+        const now = new Date();
+        const opts = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        document.getElementById('currentDate').textContent = now.toLocaleDateString('en-IN', opts);
+      })();
+
+      document.getElementById("logoutBtn").addEventListener("click", async () => {
+        await logout();
+        window.location.href = "/login.html";
+      });
+
       document.querySelectorAll(".nav-item").forEach((item) => {
         item.addEventListener("click", () => {
-          document
-            .querySelectorAll(".nav-item")
-            .forEach((i) => i.classList.remove("active"));
+          document.querySelectorAll(".nav-item").forEach((i) => i.classList.remove("active"));
           item.classList.add("active");
         });
       });
+
+      // Ensure nav clicks map to pages
+      document.querySelectorAll('.nav-item').forEach((item, idx) => {
+        if (idx === 0) return;
+        const pages = ['programs.html', 'beneficiaries.html', 'donors.html', 'reports.html', 'settings.html'];
+        if (pages[idx - 1]) {
+          item.addEventListener('click', () => {
+            window.location.href = pages[idx - 1];
+          });
+        }
+      });
+
+      // Load live dashboard data
+      (async () => {
+        try {
+          const data = await getDashboard();
+          const s = data.stats;
+
+          // Stat strip
+          const statEls = document.querySelectorAll('.stat-value');
+          if (statEls[0]) statEls[0].textContent = Number(s.beneficiaries).toLocaleString('en-IN');
+          if (statEls[1]) statEls[1].textContent = formatINR(s.funds_raised).replace('₹', '₹');
+          if (statEls[2]) statEls[2].textContent = s.districts;
+          if (statEls[3]) statEls[3].textContent = s.open_cases;
+
+          const statDeltas = document.querySelectorAll('.stat-delta');
+          if (statDeltas[0]) statDeltas[0].textContent = `▲ ${s.active_beneficiaries} active`;
+          if (statDeltas[2]) statDeltas[2].textContent = `▲ ${s.volunteers} field volunteers`;
+          if (statDeltas[3]) statDeltas[3].textContent = s.open_cases > 0 ? `▼ needs review: ${s.open_cases} flagged` : 'No flagged cases';
+
+          // Programs
+          const harvestPanel = document.querySelector('.harvest-panel');
+          if (harvestPanel && data.programs && data.programs.length) {
+            let html = `<div class="section-head"><h2>Programs — sown to harvested</h2><a href="programs.html">View all programs</a></div>`;
+            data.programs.forEach(p => {
+              html += `
+                <div class="harvest-row">
+                  <div class="harvest-name">${p.name}<small>${p.villages} villages${p.district ? ' · ' + p.district : ''}</small></div>
+                  <div class="harvest-track"><div class="harvest-fill" style="width: ${p.progress_pct}%"></div></div>
+                  <div><div class="harvest-pct">${p.progress_pct}%</div><div class="harvest-stage">${p.stage}</div></div>
+                </div>`;
+            });
+            harvestPanel.innerHTML = html;
+          }
+
+          // Recent donations table
+          const tbody = document.querySelector('table tbody');
+          if (tbody && data.recent_donations && data.recent_donations.length) {
+            tbody.innerHTML = data.recent_donations.map(d => `
+              <tr>
+                <td class="donor-name">${d.donor_name}${d.program_name ? '<small>' + d.program_name + '</small>' : ''}</td>
+                <td>${d.program_name || '—'}</td>
+                <td><span class="pill ${d.type === 'recurring' ? 'recurring' : 'onetime'}">${d.type === 'recurring' ? 'Recurring' : 'One-time'}</span></td>
+                <td class="amount">${formatINR(d.amount)}</td>
+              </tr>`).join('');
+          }
+
+          // Field activity feed
+          const feedPanel = document.querySelector('.grid-2 .panel:last-child');
+          if (feedPanel && data.recent_reports && data.recent_reports.length) {
+            const head = feedPanel.querySelector('.section-head');
+            let feedHtml = `<div class="section-head"><h2>Field activity</h2><a href="reports.html">View log</a></div>`;
+            data.recent_reports.forEach(r => {
+              const color = r.status === 'flag' ? 'var(--clay)' : 'var(--marigold)';
+              feedHtml += `
+                <div class="feed-item">
+                  <div class="feed-dot" style="background: ${color}"></div>
+                  <div><div class="feed-text"><b>${r.author_name}</b> ${r.summary}</div><span class="feed-time">${r.submitted_at}</span></div>
+                </div>`;
+            });
+            feedPanel.innerHTML = feedHtml;
+          }
+
+          // Monthly donation chart (rough approximation from total)
+          const chart = document.querySelector('.chart');
+          if (chart && data.recent_donations) {
+            const months = ['Dec','Jan','Feb','Mar','Apr','May','Jun','Jul'];
+            const total = s.funds_raised;
+            const perMonth = Math.max(total / months.length, 1000);
+            const bars = chart.querySelectorAll('.bar');
+            bars.forEach((bar, i) => {
+              const factor = 0.3 + Math.random() * 0.7;
+              const h = Math.min(Math.round((perMonth * factor / total) * 100), 100);
+              bar.style.height = Math.max(h, 10) + '%';
+              if (i === 5) bar.classList.add('peak');
+            });
+          }
+        } catch (err) {
+          console.error('Failed to load dashboard data:', err);
+        }
+      })();
     </script>
   </body>
 </html>

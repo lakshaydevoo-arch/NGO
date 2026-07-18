@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign up — Sammriddhi Trust</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="login-page">
+      <form id="signupForm" class="login-card">
+        <h1>Create account</h1>
+        <label for="name">Name</label>
+        <input type="text" id="name" required autocomplete="name" />
+        <label for="email">Email</label>
+        <input type="email" id="email" required autocomplete="email" />
+        <label for="password">Password</label>
+        <input type="password" id="password" required autocomplete="new-password" minlength="8" />
+        <label for="confirmPassword">Confirm password</label>
+        <input type="password" id="confirmPassword" required autocomplete="new-password" minlength="8" />
+        <button type="submit">Create account</button>
+        <p id="error" class="error" hidden></p>
+        <p class="auth-link">Already have an account? <a href="login.html">Sign in</a></p>
+      </form>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+      (async () => {
+        const user = await getCurrentUser();
+        if (user) {
+          window.location.href = "/index.html";
+        }
+      })();
+
+      document.getElementById("signupForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const errorEl = document.getElementById("error");
+        errorEl.hidden = true;
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        if (password !== confirmPassword) {
+          errorEl.textContent = "Passwords do not match";
+          errorEl.hidden = false;
+          return;
+        }
+
+        try {
+          await register(name, email, password);
+          window.location.href = "/index.html";
+        } catch (err) {
+          errorEl.textContent = err.message || "Could not create account";
+          errorEl.hidden = false;
+        }
+      });
+    </script>
+  </body>
+</html>

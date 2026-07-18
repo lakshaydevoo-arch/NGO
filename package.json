@@ -1,0 +1,17 @@
+{
+  "name": "sammriddhi-trust",
+  "version": "1.0.0",
+  "description": "Sammriddhi Trust NGO dashboard with auth",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "sql.js": "^1.11.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1"
+  }
+}

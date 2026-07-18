@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beneficiaries — Sammriddhi Trust</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
+      .filters { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+      .filters select, .filters input { padding: 0.4rem 0.6rem; border: 1.5px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.85rem; }
+      .btn { background: var(--moss); color: #fff; border: none; padding: 0.5rem 1.2rem; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: 500; }
+      .btn:hover { background: var(--moss-deep); }
+      .btn-s { padding: 0.3rem 0.8rem; font-size: 0.85rem; }
+      .btn-danger { background: var(--clay); }
+      .btn-danger:hover { background: #b13a2a; }
+      .form-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; justify-content: center; align-items: center; }
+      .form-overlay.open { display: flex; }
+      .form-card { background: #fff; border-radius: 12px; padding: 2rem; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; }
+      .form-card h2 { margin-top: 0; }
+      .form-card label { display: block; font-size: 0.85rem; font-weight: 600; margin-top: 1rem; margin-bottom: 0.3rem; color: var(--moss-deep); }
+      .form-card input, .form-card select, .form-card textarea { width: 100%; padding: 0.55rem 0.7rem; border: 1.5px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.9rem; }
+      .form-card .form-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.5rem; }
+      .table-wrap { overflow-x: auto; background: #fff; border-radius: 10px; border: 1px solid var(--border); }
+      table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+      th, td { padding: 0.7rem 1rem; text-align: left; border-bottom: 1px solid #eee; }
+      th { background: #f9faf8; font-weight: 600; color: var(--moss-deep); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
+      .status-badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+      .status-badge.active { background: #e0f0e0; color: #2a6e3a; }
+      .status-badge.graduated { background: #e0e8f0; color: #2a4a6e; }
+      .status-badge.inactive { background: #f0e0e0; color: #8a3a3a; }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+            <path d="M15 27C15 27 6 21.5 6 13.5C6 8.8 9.6 5 15 3C20.4 5 24 8.8 24 13.5C24 21.5 15 27 15 27Z" fill="#E3A23C" />
+            <path d="M15 27V13" stroke="#33473C" stroke-width="1.6" stroke-linecap="round" />
+            <path d="M15 18C15 18 10 16.5 10 12.5" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+            <path d="M15 22C15 22 20 20.5 20 16" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+          </svg>
+          <div class="brand-name">Sammriddhi Trust<span>Foundation</span></div>
+        </div>
+        <nav>
+          <a class="nav-item" href="index.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/></svg>Overview</a>
+          <a class="nav-item" href="programs.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 13V6l6-3 6 3v7" stroke="currentColor" stroke-width="1.3"/><path d="M6 13V9h4v4" stroke="currentColor" stroke-width="1.3"/></svg>Programs</a>
+          <a class="nav-item active" href="beneficiaries.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.3"/><path d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.3"/></svg>Beneficiaries</a>
+          <a class="nav-item" href="donors.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2c2.5 1 4 3 4 5.5C12 11 8 14 8 14S4 11 4 7.5C4 5 5.5 3 8 2Z" stroke="currentColor" stroke-width="1.3"/></svg>Donors</a>
+          <a class="nav-item" href="reports.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2h7l3 3v9H3V2Z" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 8h5M5.5 10.5h5" stroke="currentColor" stroke-width="1.2"/></svg>Field Reports</a>
+          <a class="nav-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.5v1.8M8 12.7v1.8M14.5 8h-1.8M3.3 8H1.5M12.5 3.5l-1.3 1.3M4.8 11.2l-1.3 1.3M12.5 12.5l-1.3-1.3M4.8 4.8L3.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Settings</a>
+        </nav>
+        <div class="sidebar-footer">
+          <strong>UTTAR PRADESH REGION</strong>
+          <button type="button" id="logoutBtn" class="logout-btn">Log out</button>
+        </div>
+      </aside>
+      <main>
+        <div class="topbar">
+          <div>
+            <div class="eyebrow">Beneficiary Management</div>
+            <h1>Beneficiaries</h1>
+          </div>
+          <div class="topbar-meta"><span id="currentDate"></span></div>
+        </div>
+
+        <div class="page-header">
+          <div class="filters">
+            <input id="searchInput" placeholder="Search name..." oninput="loadBeneficiaries()" />
+            <select id="statusFilter" onchange="loadBeneficiaries()">
+              <option value="">All statuses</option>
+              <option value="active">Active</option>
+              <option value="graduated">Graduated</option>
+              <option value="inactive">Inactive</option>
+            </select>
+            <select id="programFilter" onchange="loadBeneficiaries()">
+              <option value="">All programs</option>
+            </select>
+          </div>
+          <button class="btn" id="addBtn">+ Add Beneficiary</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Name</th><th>Age</th><th>Gender</th><th>Village</th><th>District</th><th>Program</th><th>Status</th><th></th></tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+
+    <div class="form-overlay" id="formOverlay">
+      <div class="form-card">
+        <h2 id="formTitle">Add Beneficiary</h2>
+        <label>Name</label><input id="fName" required />
+        <label>Age</label><input id="fAge" type="number" />
+        <label>Gender</label><select id="fGender"><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select>
+        <label>Village</label><input id="fVillage" />
+        <label>District</label><input id="fDistrict" />
+        <label>Program</label><select id="fProgram"></select>
+        <label>Contact</label><input id="fContact" />
+        <label>Status</label><select id="fStatus"><option value="active">Active</option><option value="graduated">Graduated</option><option value="inactive">Inactive</option></select>
+        <div class="form-actions"><button class="btn btn-danger" id="cancelBtn">Cancel</button><button class="btn" id="saveBtn">Save</button></div>
+      </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+      let editingId = null;
+
+      async function loadProgramsDropdown(selectId) {
+        try {
+          const { programs } = await getPrograms();
+          const sel = document.getElementById(selectId);
+          sel.innerHTML = '<option value="">— None —</option>' + programs.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+        } catch (e) { /* ignore */ }
+      }
+
+      async function loadBeneficiaries() {
+        const params = {};
+        const s = document.getElementById('searchInput').value;
+        if (s) params.search = s;
+        const st = document.getElementById('statusFilter').value;
+        if (st) params.status = st;
+        const p = document.getElementById('programFilter').value;
+        if (p) params.program_id = p;
+        const { beneficiaries } = await getBeneficiaries(params);
+        const tbody = document.getElementById('tableBody');
+        if (!beneficiaries.length) {
+          tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#888;padding:2rem">No beneficiaries found.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = beneficiaries.map(b => `
+          <tr>
+            <td><strong>${b.name}</strong></td>
+            <td>${b.age || '—'}</td>
+            <td>${b.gender || '—'}</td>
+            <td>${b.village || '—'}</td>
+            <td>${b.district || '—'}</td>
+            <td>${b.program_name || '—'}</td>
+            <td><span class="status-badge ${b.status}">${b.status}</span></td>
+            <td>
+              <button class="btn btn-s" onclick="editBeneficiary(${b.id})">Edit</button>
+              <button class="btn btn-s btn-danger" onclick="deleteBeneficiary(${b.id})">Delete</button>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      window.editBeneficiary = async (id) => {
+        editingId = id;
+        const { beneficiary } = await getBeneficiary(id);
+        document.getElementById('formTitle').textContent = 'Edit Beneficiary';
+        document.getElementById('fName').value = beneficiary.name;
+        document.getElementById('fAge').value = beneficiary.age || '';
+        document.getElementById('fGender').value = beneficiary.gender || '';
+        document.getElementById('fVillage').value = beneficiary.village || '';
+        document.getElementById('fDistrict').value = beneficiary.district || '';
+        document.getElementById('fProgram').value = beneficiary.program_id || '';
+        document.getElementById('fContact').value = beneficiary.contact || '';
+        document.getElementById('fStatus').value = beneficiary.status || 'active';
+        document.getElementById('formOverlay').classList.add('open');
+      };
+
+      window.deleteBeneficiary = async (id) => {
+        if (!confirm('Delete this beneficiary?')) return;
+        await api('DELETE', `/api/beneficiaries/${id}`);
+        loadBeneficiaries();
+      };
+
+      document.getElementById('addBtn').addEventListener('click', () => {
+        editingId = null;
+        document.getElementById('formTitle').textContent = 'Add Beneficiary';
+        ['fName','fAge','fVillage','fDistrict','fContact'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('fGender').value = '';
+        document.getElementById('fProgram').value = '';
+        document.getElementById('fStatus').value = 'active';
+        document.getElementById('formOverlay').classList.add('open');
+      });
+
+      document.getElementById('cancelBtn').addEventListener('click', () => document.getElementById('formOverlay').classList.remove('open'));
+
+      document.getElementById('saveBtn').addEventListener('click', async () => {
+        const data = {
+          name: document.getElementById('fName').value,
+          age: parseInt(document.getElementById('fAge').value) || null,
+          gender: document.getElementById('fGender').value,
+          village: document.getElementById('fVillage').value,
+          district: document.getElementById('fDistrict').value,
+          program_id: parseInt(document.getElementById('fProgram').value) || null,
+          contact: document.getElementById('fContact').value,
+          status: document.getElementById('fStatus').value
+        };
+        if (!data.name) return alert('Name is required');
+        if (editingId) await updateBeneficiary(editingId, data);
+        else await createBeneficiary(data);
+        document.getElementById('formOverlay').classList.remove('open');
+        loadBeneficiaries();
+      });
+
+      (async () => {
+        const user = await getCurrentUser();
+        if (!user) { window.location.href = '/login.html'; return; }
+        document.getElementById('logoutBtn').addEventListener('click', async () => { await logout(); window.location.href = '/login.html'; });
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        await loadProgramsDropdown('programFilter');
+        await loadProgramsDropdown('fProgram');
+        loadBeneficiaries();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login — Sammriddhi Trust</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="login-page">
+      <form id="loginForm" class="login-card">
+        <h1>Sign in</h1>
+        <label for="email">Email</label>
+        <input type="email" id="email" required autocomplete="email" />
+        <label for="password">Password</label>
+        <input type="password" id="password" required autocomplete="current-password" />
+        <button type="submit">Login</button>
+        <p id="error" class="error" hidden>Invalid email or password</p>
+        <p class="auth-link">No account? <a href="signup.html">Create one</a></p>
+      </form>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+      (async () => {
+        const user = await getCurrentUser();
+        if (user) {
+          window.location.href = "/index.html";
+        }
+      })();
+
+      document.getElementById("loginForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const errorEl = document.getElementById("error");
+        errorEl.hidden = true;
+
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        try {
+          await login(email, password);
+          window.location.href = "/index.html";
+        } catch {
+          errorEl.hidden = false;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Reports — Sammriddhi Trust</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem; }
+      .filters { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+      .filters select { padding: 0.4rem 0.6rem; border: 1.5px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.85rem; }
+      .btn { background: var(--moss); color: #fff; border: none; padding: 0.5rem 1.2rem; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: 500; }
+      .btn:hover { background: var(--moss-deep); }
+      .btn-s { padding: 0.3rem 0.8rem; font-size: 0.85rem; }
+      .btn-danger { background: var(--clay); }
+      .btn-danger:hover { background: #b13a2a; }
+      .form-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; justify-content: center; align-items: center; }
+      .form-overlay.open { display: flex; }
+      .form-card { background: #fff; border-radius: 12px; padding: 2rem; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; }
+      .form-card h2 { margin-top: 0; }
+      .form-card label { display: block; font-size: 0.85rem; font-weight: 600; margin-top: 1rem; margin-bottom: 0.3rem; color: var(--moss-deep); }
+      .form-card input, .form-card select, .form-card textarea { width: 100%; padding: 0.55rem 0.7rem; border: 1.5px solid #ddd; border-radius: 6px; font-family: inherit; font-size: 0.9rem; }
+      .form-card textarea { min-height: 80px; resize: vertical; }
+      .form-card .form-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 1.5rem; }
+      .reports-list { display: flex; flex-direction: column; gap: 0.8rem; }
+      .report-card { background: #fff; border-radius: 10px; padding: 1rem 1.2rem; border: 1px solid var(--border); display: flex; gap: 1rem; align-items: flex-start; }
+      .report-card .r-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 0.3rem; }
+      .report-card .r-dot.ok { background: var(--moss); }
+      .report-card .r-dot.flag { background: var(--clay); }
+      .report-card .r-body { flex: 1; }
+      .report-card .r-body .r-author { font-weight: 600; }
+      .report-card .r-body .r-text { margin: 0.2rem 0; }
+      .report-card .r-body .r-meta { font-size: 0.8rem; color: #888; }
+      .report-card .r-actions { flex-shrink: 0; }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+            <path d="M15 27C15 27 6 21.5 6 13.5C6 8.8 9.6 5 15 3C20.4 5 24 8.8 24 13.5C24 21.5 15 27 15 27Z" fill="#E3A23C" />
+            <path d="M15 27V13" stroke="#33473C" stroke-width="1.6" stroke-linecap="round" />
+            <path d="M15 18C15 18 10 16.5 10 12.5" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+            <path d="M15 22C15 22 20 20.5 20 16" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+          </svg>
+          <div class="brand-name">Sammriddhi Trust<span>Foundation</span></div>
+        </div>
+        <nav>
+          <a class="nav-item" href="index.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/></svg>Overview</a>
+          <a class="nav-item" href="programs.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 13V6l6-3 6 3v7" stroke="currentColor" stroke-width="1.3"/><path d="M6 13V9h4v4" stroke="currentColor" stroke-width="1.3"/></svg>Programs</a>
+          <a class="nav-item" href="beneficiaries.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.3"/><path d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.3"/></svg>Beneficiaries</a>
+          <a class="nav-item" href="donors.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2c2.5 1 4 3 4 5.5C12 11 8 14 8 14S4 11 4 7.5C4 5 5.5 3 8 2Z" stroke="currentColor" stroke-width="1.3"/></svg>Donors</a>
+          <a class="nav-item active" href="reports.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2h7l3 3v9H3V2Z" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 8h5M5.5 10.5h5" stroke="currentColor" stroke-width="1.2"/></svg>Field Reports</a>
+          <a class="nav-item"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.3"/><path d="M8 1.5v1.8M8 12.7v1.8M14.5 8h-1.8M3.3 8H1.5M12.5 3.5l-1.3 1.3M4.8 11.2l-1.3 1.3M12.5 12.5l-1.3-1.3M4.8 4.8L3.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>Settings</a>
+        </nav>
+        <div class="sidebar-footer">
+          <strong>UTTAR PRADESH REGION</strong>
+          <button type="button" id="logoutBtn" class="logout-btn">Log out</button>
+        </div>
+      </aside>
+      <main>
+        <div class="topbar">
+          <div>
+            <div class="eyebrow">Field Activity Log</div>
+            <h1>Field Reports</h1>
+          </div>
+          <div class="topbar-meta"><span id="currentDate"></span></div>
+        </div>
+
+        <div class="page-header">
+          <div class="filters">
+            <select id="statusFilter" onchange="loadReports()">
+              <option value="">All statuses</option>
+              <option value="ok">OK</option>
+              <option value="flag">Flagged</option>
+            </select>
+            <select id="programFilter" onchange="loadReports()">
+              <option value="">All programs</option>
+            </select>
+            <select id="districtFilter" onchange="loadReports()">
+              <option value="">All districts</option>
+            </select>
+          </div>
+          <button class="btn" id="addBtn">+ New Report</button>
+        </div>
+
+        <div class="reports-list" id="reportsList"></div>
+      </main>
+    </div>
+
+    <div class="form-overlay" id="formOverlay">
+      <div class="form-card">
+        <h2>New Field Report</h2>
+        <label>Author Name</label><input id="fAuthor" required />
+        <label>District</label><input id="fDistrict" />
+        <label>Village</label><input id="fVillage" />
+        <label>Program</label><select id="fProgram"></select>
+        <label>Summary</label><textarea id="fSummary" required></textarea>
+        <label>Status</label><select id="fStatus"><option value="ok">OK</option><option value="flag">Flagged</option></select>
+        <div class="form-actions"><button class="btn btn-danger" id="cancelBtn">Cancel</button><button class="btn" id="saveBtn">Save</button></div>
+      </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+      async function loadReports() {
+        const params = {};
+        const st = document.getElementById('statusFilter').value;
+        if (st) params.status = st;
+        const p = document.getElementById('programFilter').value;
+        if (p) params.program_id = p;
+        const d = document.getElementById('districtFilter').value;
+        if (d) params.district = d;
+
+        const { reports } = await getReports(params);
+        const list = document.getElementById('reportsList');
+        if (!reports.length) {
+          list.innerHTML = '<p style="color:#888;padding:2rem;text-align:center">No reports found.</p>';
+          return;
+        }
+        list.innerHTML = reports.map(r => `
+          <div class="report-card">
+            <div class="r-dot ${r.status}"></div>
+            <div class="r-body">
+              <div class="r-author">${r.author_name}</div>
+              <div class="r-text">${r.summary}</div>
+              <div class="r-meta">${r.district || '—'}${r.village ? ' · ' + r.village : ''}${r.program_name ? ' · ' + r.program_name : ''} · ${r.submitted_at}</div>
+            </div>
+            <div class="r-actions">
+              <button class="btn btn-s" onclick="flagReport(${r.id}, '${r.status}')">${r.status === 'flag' ? 'Resolve' : 'Flag'}</button>
+              <button class="btn btn-s btn-danger" onclick="deleteReport(${r.id})">Delete</button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      window.flagReport = async (id, current) => {
+        const newStatus = current === 'flag' ? 'ok' : 'flag';
+        await updateReport(id, { status: newStatus });
+        loadReports();
+      };
+
+      window.deleteReport = async (id) => {
+        if (!confirm('Delete this report?')) return;
+        await api('DELETE', `/api/reports/${id}`);
+        loadReports();
+      };
+
+      async function loadDropdowns() {
+        try {
+          const { programs } = await getPrograms();
+          const progSel = document.getElementById('programFilter');
+          const fProg = document.getElementById('fProgram');
+          const opts = '<option value="">All programs</option>' + programs.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+          progSel.innerHTML = opts;
+          fProg.innerHTML = '<option value="">— None —</option>' + programs.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+
+          const { donors } = await getDonors();
+          const districts = [...new Set(programs.filter(p => p.district).map(p => p.district))];
+          const distSel = document.getElementById('districtFilter');
+          distSel.innerHTML = '<option value="">All districts</option>' + districts.map(d => `<option value="${d}">${d}</option>`).join('');
+        } catch (e) { /* ignore */ }
+      }
+
+      document.getElementById('addBtn').addEventListener('click', () => {
+        ['fAuthor','fDistrict','fVillage','fSummary'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('fProgram').value = '';
+        document.getElementById('fStatus').value = 'ok';
+        document.getElementById('formOverlay').classList.add('open');
+      });
+
+      document.getElementById('cancelBtn').addEventListener('click', () => document.getElementById('formOverlay').classList.remove('open'));
+
+      document.getElementById('saveBtn').addEventListener('click', async () => {
+        const data = {
+          author_name: document.getElementById('fAuthor').value,
+          district: document.getElementById('fDistrict').value,
+          village: document.getElementById('fVillage').value,
+          program_id: parseInt(document.getElementById('fProgram').value) || null,
+          summary: document.getElementById('fSummary').value,
+          status: document.getElementById('fStatus').value
+        };
+        if (!data.author_name || !data.summary) return alert('Author name and summary are required');
+        await createReport(data);
+        document.getElementById('formOverlay').classList.remove('open');
+        loadReports();
+      });
+
+      (async () => {
+        const user = await getCurrentUser();
+        if (!user) { window.location.href = '/login.html'; return; }
+        document.getElementById('logoutBtn').addEventListener('click', async () => { await logout(); window.location.href = '/login.html'; });
+        document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+        await loadDropdowns();
+        loadReports();
+      })();
+    </script>
+  </body>
+</html>
