@@ -10,6 +10,14 @@ const donorsRouter = require('./routes/donors');
 const donationsRouter = require('./routes/donations');
 const reportsRouter = require('./routes/reports');
 const dashboardRouter = require('./routes/dashboard');
+const expensesRouter = require('./routes/expenses');
+const volunteersRouter = require('./routes/volunteers');
+const tasksRouter = require('./routes/tasks');
+const announcementsRouter = require('./routes/announcements');
+const settingsRouter = require('./routes/settings');
+const inventoryRouter = require('./routes/inventory');
+const eventsRouter = require('./routes/events');
+const impactRouter = require('./routes/impact');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -32,6 +40,14 @@ app.use('/api/donors', donorsRouter);
 app.use('/api/donations', donationsRouter);
 app.use('/api/reports', reportsRouter);
 app.use('/api/dashboard', dashboardRouter);
+app.use('/api/expenses', expensesRouter);
+app.use('/api/volunteers', volunteersRouter);
+app.use('/api/tasks', tasksRouter);
+app.use('/api/announcements', announcementsRouter);
+app.use('/api/settings', settingsRouter);
+app.use('/api/inventory', inventoryRouter);
+app.use('/api/events', eventsRouter);
+app.use('/api/impact', impactRouter);
 
 app.use((req, res, next) => {
   if (req.path.startsWith('/api/')) {

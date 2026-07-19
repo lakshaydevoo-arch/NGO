@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inventory — Sammriddhi Trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
+.inv-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:1.5rem}
+.inv-card{background:#fff;border-radius:10px;padding:1rem;border:1px solid var(--border)}
+.inv-card .label{font-size:.8rem;color:#888;text-transform:uppercase;letter-spacing:.03em}
+.inv-card .value{font-size:1.3rem;font-weight:700;margin-top:.2rem}
+.inv-card .value.moss{color:var(--moss)}
+.inv-card .value.marigold{color:var(--marigold)}
+.btn{background:var(--moss);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:inherit;font-weight:500}
+.btn:hover{background:var(--moss-deep)}
+.btn-s{padding:.3rem .8rem;font-size:.85rem}
+.btn-danger{background:var(--clay)}
+.btn-danger:hover{background:#b13a2a}
+.form-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:100;justify-content:center;align-items:center}
+.form-overlay.open{display:flex}
+.form-card{background:#fff;border-radius:12px;padding:2rem;width:100%;max-width:500px;max-height:90vh;overflow-y:auto}
+.form-card h2{margin-top:0}
+.form-card label{display:block;font-size:.85rem;font-weight:600;margin-top:1rem;margin-bottom:.3rem;color:var(--moss-deep)}
+.form-card input,.form-card select,.form-card textarea{width:100%;padding:.55rem .7rem;border:1.5px solid #ddd;border-radius:6px;font-family:inherit;font-size:.9rem}
+.form-card .form-actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:1.5rem}
+.table-wrap{overflow-x:auto;background:#fff;border-radius:10px;border:1px solid var(--border);margin-bottom:2rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{padding:.7rem 1rem;text-align:left;border-bottom:1px solid #eee}
+th{background:#f9faf8;font-weight:600;color:var(--moss-deep);font-size:.8rem;text-transform:uppercase;letter-spacing:.03em}
+.tabs{display:flex;gap:.5rem;border-bottom:1px solid var(--line);margin-bottom:1.5rem}
+.tab{padding:.5rem 1rem;cursor:pointer;font-weight:500;border-bottom:3px solid transparent;color:var(--ink-soft)}
+.tab.active{border-bottom-color:var(--moss);color:var(--ink);font-weight:600}
+.tab-content{display:none}
+.tab-content.active{display:block}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <path d="M15 27C15 27 6 21.5 6 13.5C6 8.8 9.6 5 15 3C20.4 5 24 8.8 24 13.5C24 21.5 15 27 15 27Z" fill="#E3A23C" />
+        <path d="M15 27V13" stroke="#33473C" stroke-width="1.6" stroke-linecap="round" />
+        <path d="M15 18C15 18 10 16.5 10 12.5" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+        <path d="M15 22C15 22 20 20.5 20 16" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+      </svg>
+      <div class="brand-name">Sammriddhi Trust<span>Foundation</span></div>
+    </div>
+
+    <nav>
+      <a class="nav-item" href="index.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/></svg>Overview</a>
+      <a class="nav-item" href="programs.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 13V6l6-3 6 3v7" stroke="currentColor" stroke-width="1.3"/><path d="M6 13V9h4v4" stroke="currentColor" stroke-width="1.3"/></svg>Programs</a>
+      <a class="nav-item" href="beneficiaries.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.3"/><path d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.3"/></svg>Beneficiaries</a>
+      <a class="nav-item" href="donors.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2c2.5 1 4 3 4 5.5C12 11 8 14 8 14S4 11 4 7.5C4 5 5.5 3 8 2Z" stroke="currentColor" stroke-width="1.3"/></svg>Donors</a>
+      <a class="nav-item" href="finance.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 4h14v10H1V4Z" stroke="currentColor" stroke-width="1.3"/><path d="M4 4V2h8v2" stroke="currentColor" stroke-width="1.3"/><path d="M5 8h6M5 10.5h4" stroke="currentColor" stroke-width="1.2"/></svg>Finance</a>
+      <a class="nav-item" href="volunteers.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="6" cy="4.5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 13c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4" stroke="currentColor" stroke-width="1.3"/><circle cx="11.5" cy="5" r="1.8" stroke="currentColor" stroke-width="1.3"/><path d="M10 12c0-1.8 1-3 3-3s3 1.2 3 3" stroke="currentColor" stroke-width="1.3"/></svg>Volunteers</a>
+      <a class="nav-item" href="tasks.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 3h12v10H2V3Z" stroke="currentColor" stroke-width="1.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.3"/></svg>Tasks</a>
+      <a class="nav-item" href="reports.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2h7l3 3v9H3V2Z" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 8h5M5.5 10.5h5" stroke="currentColor" stroke-width="1.2"/></svg>Field Reports</a>
+      <a class="nav-item" href="notice.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v12M3 6h10M3 10h10" stroke="currentColor" stroke-width="1.3"/></svg>Notice Board</a>
+      <a class="nav-item active" href="inventory.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 7h12M2 10h12" stroke="currentColor" stroke-width="1.2"/></svg>Inventory</a>
+      <a class="nav-item" href="events.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v4l2.5 1.5" stroke="currentColor" stroke-width="1.3"/></svg>Events</a>
+      <a class="nav-item" href="impact.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 14V8l4-3 5 4 3-5v10H2Z" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="5" r="1" fill="currentColor"/><circle cx="11" cy="9" r="1" fill="currentColor"/></svg>Impact Tracker</a>
+      <a class="nav-item" href="settings.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 1v2M8 13v2M13 8h2M1 8h2M11.5 4.5l1.5-1.5M3 13l1.5-1.5M11.5 11.5L13 13M3 3l1.5 1.5" stroke="currentColor" stroke-width="1.3"/></svg>Settings</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <strong>UTTAR PRADESH REGION</strong>
+      <button type="button" id="logoutBtn" class="logout-btn">Log out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Aid & materials tracker</div>
+        <h1>Inventory & Aid Distribution</h1>
+      </div>
+      <div class="topbar-meta"><span id="currentDate"></span></div>
+    </div>
+
+    <!-- STATS -->
+    <div class="inv-summary" id="invStats">
+      <div class="inv-card"><div class="label">Total Items in Stock</div><div class="value moss" id="statStock">0</div></div>
+      <div class="inv-card"><div class="label">Total Distributed Units</div><div class="value marigold" id="statDist">0</div></div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('stock')">Stock Items</div>
+      <div class="tab" onclick="switchTab('distributions')">Distribution History</div>
+    </div>
+
+    <!-- TAB 1: STOCK ITEMS -->
+    <div id="tabStock" class="tab-content active">
+      <div class="page-header">
+        <div><strong id="stockCount">0</strong> items cataloged</div>
+        <button class="btn" id="addStockBtn">+ Add / Replenish Stock</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>Quantity in Stock</th>
+              <th>Unit</th>
+              <th>Program Area</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="stockTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: DISTRIBUTIONS -->
+    <div id="tabDistributions" class="tab-content">
+      <div class="page-header">
+        <div>Log of past handouts</div>
+        <button class="btn" id="distributeBtn">+ Distribute Material</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Item Name</th>
+              <th>Quantity Handed Out</th>
+              <th>Recipient (Beneficiary)</th>
+              <th>Handed Out By</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="distTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- OVERLAY 1: ADD STOCK FORM -->
+<div class="form-overlay" id="stockOverlay">
+  <div class="form-card">
+    <h2>Add/Replenish Stock</h2>
+    <label>Item Name</label>
+    <input id="fItemName" placeholder="e.g. Sanitation Kits" required />
+    <label>Quantity to Add</label>
+    <input id="fQuantity" type="number" value="10" required />
+    <label>Unit</label>
+    <input id="fUnit" placeholder="e.g. kits, packs, bags" value="units" />
+    <label>Assigned Program</label>
+    <select id="fProgram"><option value="">— None (General overhead) —</option></select>
+    <div class="form-actions">
+      <button class="btn btn-danger" id="cancelStockBtn">Cancel</button>
+      <button class="btn" id="saveStockBtn">Save Item</button>
+    </div>
+  </div>
+</div>
+
+<!-- OVERLAY 2: DISTRIBUTE FORM -->
+<div class="form-overlay" id="distributeOverlay">
+  <div class="form-card">
+    <h2>Distribute Aid Item</h2>
+    <label>Select Item</label>
+    <select id="fdItem" required></select>
+    <label>Recipient Beneficiary</label>
+    <select id="fdBeneficiary" required><option value="">— Select Beneficiary —</option></select>
+    <label>Handed Out By (Volunteer)</label>
+    <select id="fdVolunteer"><option value="">— Select Volunteer —</option></select>
+    <label>Quantity Distributed</label>
+    <input id="fdQty" type="number" value="1" min="1" required />
+    <label>Date Distributed</label>
+    <input id="fdDate" type="date" required />
+    <div class="form-actions">
+      <button class="btn btn-danger" id="cancelDistBtn">Cancel</button>
+      <button class="btn" id="saveDistBtn">Log Distribution</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/org-loader.js"></script>
+<script>
+function switchTab(t) {
+  document.querySelectorAll('.tab').forEach((el, idx) => {
+    if ((t==='stock' && idx===0) || (t==='distributions' && idx===1)) el.classList.add('active');
+    else el.classList.remove('active');
+  });
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  if (t === 'stock') {
+    document.getElementById('tabStock').classList.add('active');
+    loadStock();
+  } else {
+    document.getElementById('tabDistributions').classList.add('active');
+    loadDistributions();
+  }
+}
+
+async function loadStock() {
+  try {
+    const res = await api('GET', '/api/inventory');
+    document.getElementById('statStock').textContent = Number(res.total_in_stock).toLocaleString('en-IN');
+    document.getElementById('statDist').textContent = Number(res.total_distributed).toLocaleString('en-IN');
+    document.getElementById('stockCount').textContent = res.items.length;
+
+    const tbody = document.getElementById('stockTableBody');
+    if (!res.items.length) {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#888;padding:2rem">No inventory items.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = res.items.map(item => `
+      <tr>
+        <td><strong>${item.item_name}</strong></td>
+        <td>${item.quantity}</td>
+        <td><span class="pill" style="background:#eee;color:#333">${item.unit || 'units'}</span></td>
+        <td>${item.program_name || '—'}</td>
+        <td>
+          <button class="btn btn-s" onclick="triggerReplenish('${item.item_name}', '${item.unit}', ${item.program_id || 'null'})">+ Add Stock</button>
+          <button class="btn btn-s btn-danger" onclick="deleteStockItem(${item.id})">Delete</button>
+        </td>
+      </tr>
+    `).join('');
+  } catch (err) {
+    console.error('Failed to load stock list:', err);
+  }
+}
+
+async function loadDistributions() {
+  try {
+    const res = await api('GET', '/api/inventory/distributions');
+    const tbody = document.getElementById('distTableBody');
+    if (!res.distributions || !res.distributions.length) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#888;padding:2rem">No distributions logged.</td></tr>';
+      return;
+    }
+    tbody.innerHTML = res.distributions.map(d => `
+      <tr>
+        <td>${d.distributed_at ? d.distributed_at.slice(0,10) : '—'}</td>
+        <td><strong>${d.item_name}</strong></td>
+        <td>${d.quantity_distributed} ${d.unit || 'units'}</td>
+        <td>${d.beneficiary_name || 'Anonymous Beneficiary'}</td>
+        <td>👤 ${d.volunteer_name || 'Staff Member'}</td>
+        <td>
+          <button class="btn btn-s btn-danger" onclick="deleteDistribution(${d.id})">Delete (Restore Stock)</button>
+        </td>
+      </tr>
+    `).join('');
+  } catch(err) {
+    console.error('Failed to load distribution history:', err);
+  }
+}
+
+function triggerReplenish(name, unit, programId) {
+  document.getElementById('fItemName').value = name;
+  document.getElementById('fUnit').value = unit;
+  document.getElementById('fProgram').value = programId || '';
+  document.getElementById('fQuantity').value = '10';
+  document.getElementById('stockOverlay').classList.add('open');
+}
+
+async function deleteStockItem(id) {
+  if (!confirm('Delete this item from inventory catalog?')) return;
+  await api('DELETE', `/api/inventory/${id}`);
+  loadStock();
+}
+
+async function deleteDistribution(id) {
+  if (!confirm('Delete distribution log? Doing so will return the items back into inventory stock.')) return;
+  await api('DELETE', `/api/inventory/distributions/${id}`);
+  loadDistributions();
+}
+
+async function loadDropdowns() {
+  try {
+    const { programs } = await getPrograms();
+    document.getElementById('fProgram').innerHTML = '<option value="">— None (General overhead) —</option>' + 
+      programs.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+
+    const { items } = await api('GET', '/api/inventory');
+    document.getElementById('fdItem').innerHTML = items.map(i => `<option value="${i.id}">${i.item_name} (in stock: ${i.quantity} ${i.unit})</option>`).join('');
+
+    const { beneficiaries } = await getBeneficiaries();
+    document.getElementById('fdBeneficiary').innerHTML = '<option value="">— Select Beneficiary —</option>' + 
+      beneficiaries.map(b => `<option value="${b.id}">${b.name} (${b.village || 'No Village'})</option>`).join('');
+
+    const { volunteers } = await api('GET', '/api/volunteers');
+    document.getElementById('fdVolunteer').innerHTML = '<option value="">— Staff Member —</option>' + 
+      volunteers.map(v => `<option value="${v.id}">${v.name}</option>`).join('');
+  } catch (e) {
+    console.error('Error loading dropdown lists:', e);
+  }
+}
+
+document.getElementById('addStockBtn').addEventListener('click', () => {
+  document.getElementById('fItemName').value = '';
+  document.getElementById('fUnit').value = 'units';
+  document.getElementById('fQuantity').value = '10';
+  document.getElementById('fProgram').value = '';
+  document.getElementById('stockOverlay').classList.add('open');
+});
+document.getElementById('cancelStockBtn').addEventListener('click', () => document.getElementById('stockOverlay').classList.remove('open'));
+document.getElementById('saveStockBtn').addEventListener('click', async () => {
+  const data = {
+    item_name: document.getElementById('fItemName').value,
+    quantity: parseInt(document.getElementById('fQuantity').value) || 0,
+    unit: document.getElementById('fUnit').value,
+    program_id: parseInt(document.getElementById('fProgram').value) || null
+  };
+  if (!data.item_name || data.quantity <= 0) return alert('Name and a positive quantity are required');
+  await api('POST', '/api/inventory', data);
+  document.getElementById('stockOverlay').classList.remove('open');
+  loadStock();
+  loadDropdowns(); // update distribution form options
+});
+
+document.getElementById('distributeBtn').addEventListener('click', async () => {
+  await loadDropdowns();
+  document.getElementById('fdQty').value = '1';
+  document.getElementById('fdDate').value = new Date().toISOString().slice(0, 10);
+  document.getElementById('distributeOverlay').classList.add('open');
+});
+document.getElementById('cancelDistBtn').addEventListener('click', () => document.getElementById('distributeOverlay').classList.remove('open'));
+document.getElementById('saveDistBtn').addEventListener('click', async () => {
+  const data = {
+    item_id: parseInt(document.getElementById('fdItem').value),
+    beneficiary_id: parseInt(document.getElementById('fdBeneficiary').value) || null,
+    volunteer_id: parseInt(document.getElementById('fdVolunteer').value) || null,
+    quantity_distributed: parseInt(document.getElementById('fdQty').value) || 0,
+    distributed_at: document.getElementById('fdDate').value || null
+  };
+  if (!data.item_id || data.quantity_distributed <= 0 || !data.beneficiary_id) {
+    return alert('Please select an item, beneficiary, and enter a valid quantity');
+  }
+  try {
+    await api('POST', '/api/inventory/distribute', data);
+    document.getElementById('distributeOverlay').classList.remove('open');
+    loadDistributions();
+  } catch (err) {
+    alert(err.message || 'Failed to distribute item. Check stock levels.');
+  }
+});
+
+(async () => {
+  const user = await getCurrentUser();
+  if (!user) { window.location.href = '/login.html'; return; }
+  document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  await loadDropdowns();
+  loadStock();
+})();
+</script>
+</body>
+</html>

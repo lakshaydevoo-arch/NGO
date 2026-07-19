@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events — Sammriddhi Trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
+.btn{background:var(--moss);color:#fff;border:none;padding:.5rem 1.2rem;border-radius:6px;cursor:pointer;font-family:inherit;font-weight:500}
+.btn:hover{background:var(--moss-deep)}
+.btn-s{padding:.3rem .8rem;font-size:.85rem}
+.btn-danger{background:var(--clay)}
+.btn-danger:hover{background:#b13a2a}
+.form-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:100;justify-content:center;align-items:center}
+.form-overlay.open{display:flex}
+.form-card{background:#fff;border-radius:12px;padding:2rem;width:100%;max-width:500px;max-height:90vh;overflow-y:auto}
+.form-card h2{margin-top:0}
+.form-card label{display:block;font-size:.85rem;font-weight:600;margin-top:1rem;margin-bottom:.3rem;color:var(--moss-deep)}
+.form-card input,.form-card select,.form-card textarea{width:100%;padding:.55rem .7rem;border:1.5px solid #ddd;border-radius:6px;font-family:inherit;font-size:.9rem}
+.form-card textarea{min-height:80px}
+.form-card .form-actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:1.5rem}
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;margin-top:1rem}
+.event-card{background:#fff;border-radius:14px;padding:1.5rem;border:1px solid var(--border);position:relative;display:flex;flex-direction:column;justify-content:space-between}
+.event-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--marigold);border-top-left-radius:14px;border-top-right-radius:14px}
+.event-card.past::before{background:var(--line)}
+.event-title{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;margin-bottom:.5rem;color:var(--ink)}
+.event-meta{font-size:.8rem;color:#888;margin-bottom:.8rem;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.02em}
+.event-desc{font-size:.9rem;line-height:1.5;color:var(--ink-soft);margin-bottom:1.2rem;flex-grow:1}
+.event-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #f0f0f0;padding-top:.8rem;margin-top:auto}
+.vols-badge{background:#e8f0e8;color:#2a6e3a;padding:.2rem .5rem;border-radius:20px;font-size:.8rem;font-weight:500}
+.event-actions{display:flex;gap:.3rem}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <path d="M15 27C15 27 6 21.5 6 13.5C6 8.8 9.6 5 15 3C20.4 5 24 8.8 24 13.5C24 21.5 15 27 15 27Z" fill="#E3A23C" />
+        <path d="M15 27V13" stroke="#33473C" stroke-width="1.6" stroke-linecap="round" />
+        <path d="M15 18C15 18 10 16.5 10 12.5" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+        <path d="M15 22C15 22 20 20.5 20 16" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+      </svg>
+      <div class="brand-name">Sammriddhi Trust<span>Foundation</span></div>
+    </div>
+
+    <nav>
+      <a class="nav-item" href="index.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/></svg>Overview</a>
+      <a class="nav-item" href="programs.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 13V6l6-3 6 3v7" stroke="currentColor" stroke-width="1.3"/><path d="M6 13V9h4v4" stroke="currentColor" stroke-width="1.3"/></svg>Programs</a>
+      <a class="nav-item" href="beneficiaries.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.3"/><path d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.3"/></svg>Beneficiaries</a>
+      <a class="nav-item" href="donors.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2c2.5 1 4 3 4 5.5C12 11 8 14 8 14S4 11 4 7.5C4 5 5.5 3 8 2Z" stroke="currentColor" stroke-width="1.3"/></svg>Donors</a>
+      <a class="nav-item" href="finance.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 4h14v10H1V4Z" stroke="currentColor" stroke-width="1.3"/><path d="M4 4V2h8v2" stroke="currentColor" stroke-width="1.3"/><path d="M5 8h6M5 10.5h4" stroke="currentColor" stroke-width="1.2"/></svg>Finance</a>
+      <a class="nav-item" href="volunteers.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="6" cy="4.5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 13c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4" stroke="currentColor" stroke-width="1.3"/><circle cx="11.5" cy="5" r="1.8" stroke="currentColor" stroke-width="1.3"/><path d="M10 12c0-1.8 1-3 3-3s3 1.2 3 3" stroke="currentColor" stroke-width="1.3"/></svg>Volunteers</a>
+      <a class="nav-item" href="tasks.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 3h12v10H2V3Z" stroke="currentColor" stroke-width="1.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.3"/></svg>Tasks</a>
+      <a class="nav-item" href="reports.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2h7l3 3v9H3V2Z" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 8h5M5.5 10.5h5" stroke="currentColor" stroke-width="1.2"/></svg>Field Reports</a>
+      <a class="nav-item" href="notice.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v12M3 6h10M3 10h10" stroke="currentColor" stroke-width="1.3"/></svg>Notice Board</a>
+      <a class="nav-item" href="inventory.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 7h12M2 10h12" stroke="currentColor" stroke-width="1.2"/></svg>Inventory</a>
+      <a class="nav-item active" href="events.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v4l2.5 1.5" stroke="currentColor" stroke-width="1.3"/></svg>Events</a>
+      <a class="nav-item" href="impact.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 14V8l4-3 5 4 3-5v10H2Z" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="5" r="1" fill="currentColor"/><circle cx="11" cy="9" r="1" fill="currentColor"/></svg>Impact Tracker</a>
+      <a class="nav-item" href="settings.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 1v2M8 13v2M13 8h2M1 8h2M11.5 4.5l1.5-1.5M3 13l1.5-1.5M11.5 11.5L13 13M3 3l1.5 1.5" stroke="currentColor" stroke-width="1.3"/></svg>Settings</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <strong>UTTAR PRADESH REGION</strong>
+      <button type="button" id="logoutBtn" class="logout-btn">Log out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Field Activity Scheduler</div>
+        <h1>Campaigns & Events</h1>
+      </div>
+      <div class="topbar-meta"><span id="currentDate"></span></div>
+    </div>
+
+    <div class="page-header">
+      <div>Plan and coordinate field campaigns, training camps, and community drives.</div>
+      <button class="btn" id="addBtn">+ Schedule Event</button>
+    </div>
+
+    <div class="events-grid" id="eventsGrid"></div>
+  </main>
+</div>
+
+<!-- FORM OVERLAY -->
+<div class="form-overlay" id="formOverlay">
+  <div class="form-card">
+    <h2 id="formTitle">Schedule Campaign Event</h2>
+    <label>Event Title</label>
+    <input id="fTitle" placeholder="e.g. Free Eye Health Checkup Camp" required />
+    
+    <label>Description</label>
+    <textarea id="fDesc" placeholder="Describe the purpose, checklist and target audience..."></textarea>
+    
+    <label>Location / Venue</label>
+    <input id="fLocation" placeholder="e.g. Aurangabad Village Panchayat Bhavan" />
+    
+    <label>Date</label>
+    <input id="fDate" type="date" required />
+    
+    <label>Linked Program</label>
+    <select id="fProgram"><option value="">— None (Independent) —</option></select>
+    
+    <label>Expected Volunteer Turnout</label>
+    <input id="fVolunteers" type="number" value="3" />
+    
+    <div class="form-actions">
+      <button class="btn btn-danger" id="cancelBtn">Cancel</button>
+      <button class="btn" id="saveBtn">Schedule Event</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/org-loader.js"></script>
+<script>
+let editingId = null;
+
+async function loadEvents() {
+  try {
+    const res = await api('GET', '/api/events');
+    const container = document.getElementById('eventsGrid');
+    if (!res.events.length) {
+      container.innerHTML = '<p style="color:#888;text-align:center;padding:3rem 0;grid-column:1/-1">No events scheduled. Plan your first drive now!</p>';
+      return;
+    }
+
+    const today = new Date().toISOString().slice(0, 10);
+    container.innerHTML = res.events.map(e => {
+      const isPast = e.event_date < today;
+      return `
+        <div class="event-card ${isPast ? 'past' : ''}">
+          <div>
+            <div class="event-title">${e.title}</div>
+            <div class="event-meta">📅 ${e.event_date} &middot; 📍 ${e.location || 'Field Location'}</div>
+            <div class="event-desc">${e.description || 'No description provided.'}</div>
+          </div>
+          <div class="event-footer">
+            <span class="vols-badge">${e.volunteer_count || 0} Vols Needed</span>
+            <div class="event-actions">
+              <button class="btn btn-s" onclick="editEvent(${e.id})">Edit</button>
+              <button class="btn btn-s btn-danger" onclick="deleteEvent(${e.id})">Delete</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  } catch (err) {
+    console.error('Failed to load events grid:', err);
+  }
+}
+
+window.editEvent = async (id) => {
+  editingId = id;
+  const res = await api('GET', '/api/events');
+  const event = res.events.find(e => e.id === id);
+  if (!event) return;
+
+  document.getElementById('formTitle').textContent = 'Edit Campaign Event';
+  document.getElementById('fTitle').value = event.title;
+  document.getElementById('fDesc').value = event.description || '';
+  document.getElementById('fLocation').value = event.location || '';
+  document.getElementById('fDate').value = event.event_date;
+  document.getElementById('fProgram').value = event.program_id || '';
+  document.getElementById('fVolunteers').value = event.volunteer_count || 0;
+  
+  document.getElementById('formOverlay').classList.add('open');
+}
+
+window.deleteEvent = async (id) => {
+  if (!confirm('Are you sure you want to cancel and delete this event?')) return;
+  await api('DELETE', `/api/events/${id}`);
+  loadEvents();
+}
+
+async function loadDropdown() {
+  try {
+    const { programs } = await getPrograms();
+    document.getElementById('fProgram').innerHTML = '<option value="">— None (Independent) —</option>' + 
+      programs.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+  } catch(e) {}
+}
+
+document.getElementById('addBtn').addEventListener('click', () => {
+  editingId = null;
+  document.getElementById('formTitle').textContent = 'Schedule Campaign Event';
+  ['fTitle', 'fDesc', 'fLocation', 'fDate'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('fProgram').value = '';
+  document.getElementById('fVolunteers').value = '3';
+  document.getElementById('formOverlay').classList.add('open');
+});
+
+document.getElementById('cancelBtn').addEventListener('click', () => document.getElementById('formOverlay').classList.remove('open'));
+
+document.getElementById('saveBtn').addEventListener('click', async () => {
+  const data = {
+    title: document.getElementById('fTitle').value,
+    description: document.getElementById('fDesc').value,
+    location: document.getElementById('fLocation').value,
+    event_date: document.getElementById('fDate').value,
+    program_id: parseInt(document.getElementById('fProgram').value) || null,
+    volunteer_count: parseInt(document.getElementById('fVolunteers').value) || 0
+  };
+  
+  if (!data.title || !data.event_date) return alert('Title and event date are required');
+  
+  if (editingId) {
+    await api('PUT', `/api/events/${editingId}`, data);
+  } else {
+    await api('POST', '/api/events', data);
+  }
+  
+  document.getElementById('formOverlay').classList.remove('open');
+  loadEvents();
+});
+
+(async () => {
+  const user = await getCurrentUser();
+  if (!user) { window.location.href = '/login.html'; return; }
+  document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  await loadDropdown();
+  loadEvents();
+})();
+</script>
+</body>
+</html>

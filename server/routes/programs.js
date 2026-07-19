@@ -22,8 +22,9 @@ router.post('/', requireAuth, (req, res) => {
   if (!name) return res.status(400).json({ error: 'Name is required' });
   db.run('INSERT INTO programs (name, description, villages, district, progress_pct, stage, target_amount, raised_amount) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
     [name, description || '', villages || 0, district || '', progress_pct || 0, stage || 'Sown', target_amount || 0, raised_amount || 0]);
-  const row = db.get('SELECT last_insert_rowid() AS id');
-  const program = db.get('SELECT * FROM programs WHERE id = ?', [row.id]);
+  const rows = db.all('SELECT id FROM programs ORDER BY id DESC LIMIT 1');
+  if (!rows.length) return res.status(500).json({ error: 'Failed to create program' });
+  const program = db.get('SELECT * FROM programs WHERE id = ?', [rows[0].id]);
   res.status(201).json({ program });
 });
 

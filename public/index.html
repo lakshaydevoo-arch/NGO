@@ -1,568 +1,542 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Root & Rise Foundation — Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="app">
-      <!-- SIDEBAR -->
-      <aside class="sidebar">
-        <div class="brand">
-          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
-            <path
-              d="M15 27C15 27 6 21.5 6 13.5C6 8.8 9.6 5 15 3C20.4 5 24 8.8 24 13.5C24 21.5 15 27 15 27Z"
-              fill="#E3A23C"
-            />
-            <path
-              d="M15 27V13"
-              stroke="#33473C"
-              stroke-width="1.6"
-              stroke-linecap="round"
-            />
-            <path
-              d="M15 18C15 18 10 16.5 10 12.5"
-              stroke="#33473C"
-              stroke-width="1.4"
-              stroke-linecap="round"
-            />
-            <path
-              d="M15 22C15 22 20 20.5 20 16"
-              stroke="#33473C"
-              stroke-width="1.4"
-              stroke-linecap="round"
-            />
-          </svg>
-          <div class="brand-name">Sammriddhi Trust<span>Foundation</span></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sammriddhi Trust
+    Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+          <path d="M15 27C15 27 6 21.5 6 13.5C6 8.8 9.6 5 15 3C20.4 5 24 8.8 24 13.5C24 21.5 15 27 15 27Z"
+            fill="#E3A23C" />
+          <path d="M15 27V13" stroke="#33473C" stroke-width="1.6" stroke-linecap="round" />
+          <path d="M15 18C15 18 10 16.5 10 12.5" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+          <path d="M15 22C15 22 20 20.5 20 16" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+        </svg>
+        <div class="brand-name">Sammriddhi Trust<span>Foundation</span></div>
+      </div>
+
+      <nav>
+        <a class="nav-item active" href="index.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <rect x="1" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3" />
+            <rect x="9" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3" />
+            <rect x="1" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3" />
+            <rect x="9" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3" />
+          </svg>Overview</a>
+        <a class="nav-item" href="programs.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M2 13V6l6-3 6 3v7" stroke="currentColor" stroke-width="1.3" />
+            <path d="M6 13V9h4v4" stroke="currentColor" stroke-width="1.3" />
+          </svg>Programs</a>
+        <a class="nav-item" href="beneficiaries.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.3" />
+            <path d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.3" />
+          </svg>Beneficiaries</a>
+        <a class="nav-item" href="donors.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M8 2c2.5 1 4 3 4 5.5C12 11 8 14 8 14S4 11 4 7.5C4 5 5.5 3 8 2Z" stroke="currentColor"
+              stroke-width="1.3" />
+          </svg>Donors</a>
+        <a class="nav-item" href="finance.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M1 4h14v10H1V4Z" stroke="currentColor" stroke-width="1.3" />
+            <path d="M4 4V2h8v2" stroke="currentColor" stroke-width="1.3" />
+            <path d="M5 8h6M5 10.5h4" stroke="currentColor" stroke-width="1.2" />
+          </svg>Finance</a>
+        <a class="nav-item" href="volunteers.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <circle cx="6" cy="4.5" r="2.2" stroke="currentColor" stroke-width="1.3" />
+            <path d="M1.5 13c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4" stroke="currentColor" stroke-width="1.3" />
+            <circle cx="11.5" cy="5" r="1.8" stroke="currentColor" stroke-width="1.3" />
+            <path d="M10 12c0-1.8 1-3 3-3s3 1.2 3 3" stroke="currentColor" stroke-width="1.3" />
+          </svg>Volunteers</a>
+        <a class="nav-item" href="tasks.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M2 3h12v10H2V3Z" stroke="currentColor" stroke-width="1.3" />
+            <path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.3" />
+          </svg>Tasks</a>
+        <a class="nav-item" href="reports.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M3 2h7l3 3v9H3V2Z" stroke="currentColor" stroke-width="1.3" />
+            <path d="M5.5 8h5M5.5 10.5h5" stroke="currentColor" stroke-width="1.2" />
+          </svg>Field Reports</a>
+        <a class="nav-item" href="notice.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M8 2v12M3 6h10M3 10h10" stroke="currentColor" stroke-width="1.3" />
+          </svg>Notice Board</a>
+        <a class="nav-item" href="inventory.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3" />
+            <path d="M2 7h12M2 10h12" stroke="currentColor" stroke-width="1.2" />
+          </svg>Inventory</a>
+        <a class="nav-item" href="events.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3" />
+            <path d="M8 5v4l2.5 1.5" stroke="currentColor" stroke-width="1.3" />
+          </svg>Events</a>
+        <a class="nav-item" href="impact.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <path d="M2 14V8l4-3 5 4 3-5v10H2Z" stroke="currentColor" stroke-width="1.3" />
+            <circle cx="6" cy="5" r="1" fill="currentColor" />
+            <circle cx="11" cy="9" r="1" fill="currentColor" />
+          </svg>Impact Tracker</a>
+        <a class="nav-item" href="settings.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+            aria-hidden="true">
+            <circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.3" />
+            <path d="M8 1v2M8 13v2M13 8h2M1 8h2M11.5 4.5l1.5-1.5M3 13l1.5-1.5M11.5 11.5L13 13M3 3l1.5 1.5"
+              stroke="currentColor" stroke-width="1.3" />
+          </svg>Settings</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <strong>UTTAR PRADESH REGION</strong>
+        14 districts &middot; 62 field volunteers
+        <button type="button" id="logoutBtn" class="logout-btn">Log out</button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main>
+      <div class="topbar">
+        <div>
+          <div class="eyebrow">Overview — Kharif reporting cycle</div>
+          <h1>Good morning, <em id="userName">...</em></h1>
+        </div>
+        <div class="topbar-meta">
+          <span id="currentDate"></span><br />
+          Last field sync: 41 minutes ago
+        </div>
+      </div>
+
+      <!-- STAT STRIP -->
+      <section class="stat-strip">
+        <div class="stat-card">
+          <div class="stat-label">Beneficiaries reached</div>
+          <div class="stat-value">18,420</div>
+          <div class="stat-delta">▲ 6.2% this quarter</div>
+        </div>
+        <div class="stat-card marigold">
+          <div class="stat-label">Funds raised (FY26)</div>
+          <div class="stat-value">₹42.6L</div>
+          <div class="stat-delta">▲ 12.8% vs target</div>
+        </div>
+        <div class="stat-card sky">
+          <div class="stat-label">Villages covered</div>
+          <div class="stat-value">86</div>
+          <div class="stat-delta">▲ 4 new this month</div>
+        </div>
+        <div class="stat-card clay">
+          <div class="stat-label">Open field cases</div>
+          <div class="stat-value">23</div>
+          <div class="stat-delta down" id="statCasesDelta">▼ needs review: 5 overdue</div>
+        </div>
+        <div class="stat-card" style="--accent:var(--sky)">
+          <div class="stat-label">Pending tasks</div>
+          <div class="stat-value" id="statTasks">0</div>
+          <div class="stat-delta" id="statTasksDelta">▲ upcoming due dates</div>
+        </div>
+      </section>
+
+      <!-- SIGNATURE: HARVEST BARS -->
+      <section class="harvest-panel">
+        <div class="section-head">
+          <h2>Programs — sown to harvested</h2>
+          <a href="#">View all programs</a>
         </div>
 
-        <nav>
-          <a class="nav-item active"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <rect
-                x="1"
-                y="1"
-                width="6"
-                height="6"
-                rx="1.2"
-                stroke="currentColor"
-                stroke-width="1.3"
-              />
-              <rect
-                x="9"
-                y="1"
-                width="6"
-                height="6"
-                rx="1.2"
-                stroke="currentColor"
-                stroke-width="1.3"
-              />
-              <rect
-                x="1"
-                y="9"
-                width="6"
-                height="6"
-                rx="1.2"
-                stroke="currentColor"
-                stroke-width="1.3"
-              />
-              <rect
-                x="9"
-                y="9"
-                width="6"
-                height="6"
-                rx="1.2"
-                stroke="currentColor"
-                stroke-width="1.3"
-              /></svg
-            >Overview</a
-          >
-          <a class="nav-item"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path
-                d="M2 13V6l6-3 6 3v7"
-                stroke="currentColor"
-                stroke-width="1.3"
-              />
-              <path
-                d="M6 13V9h4v4"
-                stroke="currentColor"
-                stroke-width="1.3"
-              /></svg
-            >Programs</a
-          >
-          <a class="nav-item"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle
-                cx="8"
-                cy="5"
-                r="2.6"
-                stroke="currentColor"
-                stroke-width="1.3"
-              />
-              <path
-                d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5"
-                stroke="currentColor"
-                stroke-width="1.3"
-              /></svg
-            >Beneficiaries</a
-          >
-          <a class="nav-item"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path
-                d="M8 2c2.5 1 4 3 4 5.5C12 11 8 14 8 14S4 11 4 7.5C4 5 5.5 3 8 2Z"
-                stroke="currentColor"
-                stroke-width="1.3"
-              /></svg
-            >Donors</a
-          >
-          <a class="nav-item"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path
-                d="M3 2h7l3 3v9H3V2Z"
-                stroke="currentColor"
-                stroke-width="1.3"
-              />
-              <path
-                d="M5.5 8h5M5.5 10.5h5"
-                stroke="currentColor"
-                stroke-width="1.2"
-              /></svg
-            >Field Reports</a
-          >
-          <a class="nav-item"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <circle
-                cx="8"
-                cy="8"
-                r="2"
-                stroke="currentColor"
-                stroke-width="1.3"
-              />
-              <path
-                d="M8 1.5v1.8M8 12.7v1.8M14.5 8h-1.8M3.3 8H1.5M12.5 3.5l-1.3 1.3M4.8 11.2l-1.3 1.3M12.5 12.5l-1.3-1.3M4.8 4.8L3.5 3.5"
-                stroke="currentColor"
-                stroke-width="1.2"
-                stroke-linecap="round"
-              /></svg
-            >Settings</a
-          >
-        </nav>
+        <div class="harvest-row">
+          <div class="harvest-name">
+            Clean Water Access<small>18 villages · UP</small>
+          </div>
+          <div class="harvest-track">
+            <div class="harvest-fill" style="width: 82%"></div>
 
-        <div class="sidebar-footer">
-          <strong>UTTAR PRADESH REGION</strong>
-          14 districts &middot; 62 field volunteers
-          <button type="button" id="logoutBtn" class="logout-btn">Log out</button>
-        </div>
-      </aside>
-
-      <!-- MAIN -->
-      <main>
-        <div class="topbar">
+          </div>
           <div>
-            <div class="eyebrow">Overview — Kharif reporting cycle</div>
-            <h1>Good morning, <em id="userName">...</em></h1>
-          </div>
-          <div class="topbar-meta">
-            <span id="currentDate"></span><br />
-            Last field sync: 41 minutes ago
+            <div class="harvest-pct">82%</div>
+            <div class="harvest-stage">Harvested</div>
           </div>
         </div>
 
-        <!-- STAT STRIP -->
-        <section class="stat-strip">
-          <div class="stat-card">
-            <div class="stat-label">Beneficiaries reached</div>
-            <div class="stat-value">18,420</div>
-            <div class="stat-delta">▲ 6.2% this quarter</div>
+        <div class="harvest-row">
+          <div class="harvest-name">
+            Girls' Primary Education<small>32 villages · UP</small>
           </div>
-          <div class="stat-card marigold">
-            <div class="stat-label">Funds raised (FY26)</div>
-            <div class="stat-value">₹42.6L</div>
-            <div class="stat-delta">▲ 12.8% vs target</div>
-          </div>
-          <div class="stat-card sky">
-            <div class="stat-label">Villages covered</div>
-            <div class="stat-value">86</div>
-            <div class="stat-delta">▲ 4 new this month</div>
-          </div>
-          <div class="stat-card clay">
-            <div class="stat-label">Open field cases</div>
-            <div class="stat-value">23</div>
-            <div class="stat-delta down">▼ needs review: 5 overdue</div>
-          </div>
-        </section>
+          <div class="harvest-track">
+            <div class="harvest-fill" style="width: 58%"></div>
 
-        <!-- SIGNATURE: HARVEST BARS -->
-        <section class="harvest-panel">
+          </div>
+          <div>
+            <div class="harvest-pct">58%</div>
+            <div class="harvest-stage">Growing</div>
+          </div>
+        </div>
+
+        <div class="harvest-row">
+          <div class="harvest-name">
+            Mobile Health Camps<small>21 villages · UP</small>
+          </div>
+          <div class="harvest-track">
+            <div class="harvest-fill" style="width: 35%"></div>
+
+          </div>
+          <div>
+            <div class="harvest-pct">35%</div>
+            <div class="harvest-stage">Sprouting</div>
+          </div>
+        </div>
+
+        <div class="harvest-row">
+          <div class="harvest-name">
+            Farmer Skilling Cohort<small>15 villages · UP</small>
+          </div>
+          <div class="harvest-track">
+            <div class="harvest-fill" style="width: 12%"></div>
+
+          </div>
+          <div>
+            <div class="harvest-pct">12%</div>
+            <div class="harvest-stage">Sown</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHARTS + FEED -->
+      <section class="grid-2">
+        <div class="panel">
           <div class="section-head">
-            <h2>Programs — sown to harvested</h2>
-            <a href="#">View all programs</a>
+            <h2>Donations, last 8 months</h2>
           </div>
-
-          <div class="harvest-row">
-            <div class="harvest-name">
-              Clean Water Access<small>18 villages · UP</small>
-            </div>
-            <div class="harvest-track">
-              <div class="harvest-fill" style="width: 82%"></div>
-              
-            </div>
-            <div>
-              <div class="harvest-pct">82%</div>
-              <div class="harvest-stage">Harvested</div>
-            </div>
-          </div>
-
-          <div class="harvest-row">
-            <div class="harvest-name">
-              Girls' Primary Education<small>32 villages · UP</small>
-            </div>
-            <div class="harvest-track">
-              <div class="harvest-fill" style="width: 58%"></div>
-              
-            </div>
-            <div>
-              <div class="harvest-pct">58%</div>
-              <div class="harvest-stage">Growing</div>
-            </div>
-          </div>
-
-          <div class="harvest-row">
-            <div class="harvest-name">
-              Mobile Health Camps<small>21 villages · UP</small>
-            </div>
-            <div class="harvest-track">
-              <div class="harvest-fill" style="width: 35%"></div>
-             
-            </div>
-            <div>
-              <div class="harvest-pct">35%</div>
-              <div class="harvest-stage">Sprouting</div>
-            </div>
-          </div>
-
-          <div class="harvest-row">
-            <div class="harvest-name">
-              Farmer Skilling Cohort<small>15 villages · UP</small>
-            </div>
-            <div class="harvest-track">
-              <div class="harvest-fill" style="width: 12%"></div>
-             
-            </div>
-            <div>
-              <div class="harvest-pct">12%</div>
-              <div class="harvest-stage">Sown</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- CHART + FEED -->
-        <section class="grid-2">
-          <div class="panel">
-            <div class="section-head">
-              <h2>Donations, last 8 months</h2>
-              <a href="#">Export CSV</a>
-            </div>
-            <div class="chart">
-              <div class="bar-col">
-                <div class="bar" style="height: 38%"></div>
-                <div class="bar-month">Dec</div>
-              </div>
-              <div class="bar-col">
-                <div class="bar" style="height: 52%"></div>
-                <div class="bar-month">Jan</div>
-              </div>
-              <div class="bar-col">
-                <div class="bar" style="height: 44%"></div>
-                <div class="bar-month">Feb</div>
-              </div>
-              <div class="bar-col">
-                <div class="bar" style="height: 61%"></div>
-                <div class="bar-month">Mar</div>
-              </div>
-              <div class="bar-col">
-                <div class="bar" style="height: 57%"></div>
-                <div class="bar-month">Apr</div>
-              </div>
-              <div class="bar-col">
-                <div class="bar" style="height: 70%"></div>
-                <div class="bar-month">May</div>
-              </div>
-              <div class="bar-col">
-                <div class="bar peak" style="height: 96%"></div>
-                <div class="bar-month">Jun</div>
-              </div>
-              <div class="bar-col">
-                <div class="bar" style="height: 64%"></div>
-                <div class="bar-month">Jul</div>
-              </div>
-            </div>
-            <div class="chart-legend">
-              <span
-                ><i class="dot" style="background: var(--moss)"></i>Monthly
-                total</span
-              >
-              <span
-                ><i class="dot" style="background: var(--marigold)"></i>Peak
-                month (annual gala)</span
-              >
-            </div>
-          </div>
-
-          <div class="panel">
-            <div class="section-head">
-              <h2>Field activity</h2>
-              <a href="#">View log</a>
-            </div>
-
-            <div class="feed-item">
-              <div class="feed-dot"></div>
-              <div>
-                <div class="feed-text">
-                  <b>Ramesh K.</b> logged 3 new borewell installations in
-                  Bulandshahr block
-                </div>
-                <span class="feed-time">18 minutes ago</span>
-              </div>
-            </div>
-            <div class="feed-item">
-              <div class="feed-dot" style="background: var(--marigold)"></div>
-              <div>
-                <div class="feed-text">
-                  <b>Priya S.</b> closed enrollment for 40 students, Meerut
-                  cohort
-                </div>
-                <span class="feed-time">1 hour ago</span>
-              </div>
-            </div>
-            <div class="feed-item">
-              <div class="feed-dot" style="background: var(--clay)"></div>
-              <div>
-                <div class="feed-text">
-                  Health camp in Hapur flagged low turnout — needs follow-up
-                </div>
-                <span class="feed-time">3 hours ago</span>
-              </div>
-            </div>
-            <div class="feed-item">
-              <div class="feed-dot"></div>
-              <div>
-                <div class="feed-text">
-                  <b>Anonymous donor</b> contributed ₹1,50,000 toward water
-                  program
-                </div>
-                <span class="feed-time">Yesterday, 6:40 PM</span>
-              </div>
-            </div>
-            <div class="feed-item">
-              <div class="feed-dot"></div>
-              <div>
-                <div class="feed-text">
-                  <b>Field team Ghaziabad</b> submitted quarterly impact survey
-                </div>
-                <span class="feed-time">Yesterday, 11:05 AM</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- DONOR TABLE -->
-        <section class="panel">
+          <canvas id="donationChart" height="180"></canvas>
+        </div>
+        <div class="panel">
           <div class="section-head">
-            <h2>Recent contributions</h2>
-            <a href="#">View all donors</a>
+            <h2>Donations by program</h2>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>Donor</th>
-                <th>Program</th>
-                <th>Type</th>
-                <th style="text-align: right">Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="donor-name">
-                  Meera Agarwal<small>meera.a@gmail.com</small>
-                </td>
-                <td>Clean Water Access</td>
-                <td><span class="pill recurring">Recurring</span></td>
-                <td class="amount">₹5,000</td>
-              </tr>
-              <tr>
-                <td class="donor-name">
-                  TCS Foundation<small>Corporate CSR grant</small>
-                </td>
-                <td>Girls' Primary Education</td>
-                <td><span class="pill onetime">One-time</span></td>
-                <td class="amount">₹3,20,000</td>
-              </tr>
-              <tr>
-                <td class="donor-name">
-                  Vikram Nair<small>vik.nair@outlook.com</small>
-                </td>
-                <td>Mobile Health Camps</td>
-                <td><span class="pill recurring">Recurring</span></td>
-                <td class="amount">₹2,500</td>
-              </tr>
-              <tr>
-                <td class="donor-name">Anonymous</td>
-                <td>Clean Water Access</td>
-                <td><span class="pill onetime">One-time</span></td>
-                <td class="amount">₹1,50,000</td>
-              </tr>
-              <tr>
-                <td class="donor-name">
-                  Sunita Devi Trust<small>Local philanthropy</small>
-                </td>
-                <td>Farmer Skilling Cohort</td>
-                <td><span class="pill onetime">One-time</span></td>
-                <td class="amount">₹75,000</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-      </main>
-    </div>
+          <canvas id="programChart" height="180"></canvas>
+        </div>
+      </section>
 
-    <script src="js/auth.js"></script>
-    <script src="js/api.js"></script>
-    <script>
-      function formatINR(n) {
-        return '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
-      }
+      <section class="grid-2">
+        <div class="panel">
+          <div class="section-head">
+            <h2>Field activity</h2>
+            <a href="reports.html">View log</a>
+          </div>
+          <div id="feedContainer"></div>
+        </div>
+        <div class="panel">
+          <div class="section-head">
+            <h2>Beneficiaries by program</h2>
+          </div>
+          <canvas id="beneficiaryChart" height="180"></canvas>
+        </div>
+      </section>
 
-      function stageClass(stage) {
-        const map = { 'Sown': '', 'Sprouting': '', 'Growing': '', 'Harvested': '' };
-        return stage ? stage.toLowerCase() : '';
-      }
+      <!-- UPCOMING TASKS + ANNOUNCEMENTS -->
+      <section class="grid-2">
+        <div class="panel">
+          <div class="section-head">
+            <h2>Upcoming tasks</h2><a href="tasks.html">View all</a>
+          </div>
+          <div id="upcomingTasks"></div>
+        </div>
+        <div class="panel">
+          <div class="section-head">
+            <h2>Announcements</h2><a href="notice.html">View all</a>
+          </div>
+          <div id="announcementsWidget"></div>
+        </div>
+      </section>
 
-      (async () => {
-        const user = await getCurrentUser();
-        if (!user) {
-          window.location.href = "/login.html";
-          return;
-        }
-        document.getElementById("userName").textContent = user.name;
-      })();
+      <!-- DONOR TABLE -->
+      <section class="panel">
+        <div class="section-head">
+          <h2>Recent contributions</h2>
+          <a href="#">View all donors</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Donor</th>
+              <th>Program</th>
+              <th>Type</th>
+              <th style="text-align: right">Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="donor-name">
+                Meera Agarwal<small>meera.a@gmail.com</small>
+              </td>
+              <td>Clean Water Access</td>
+              <td><span class="pill recurring">Recurring</span></td>
+              <td class="amount">₹5,000</td>
+            </tr>
+            <tr>
+              <td class="donor-name">
+                TCS Foundation<small>Corporate CSR grant</small>
+              </td>
+              <td>Girls' Primary Education</td>
+              <td><span class="pill onetime">One-time</span></td>
+              <td class="amount">₹3,20,000</td>
+            </tr>
+            <tr>
+              <td class="donor-name">
+                Vikram Nair<small>vik.nair@outlook.com</small>
+              </td>
+              <td>Mobile Health Camps</td>
+              <td><span class="pill recurring">Recurring</span></td>
+              <td class="amount">₹2,500</td>
+            </tr>
+            <tr>
+              <td class="donor-name">Anonymous</td>
+              <td>Clean Water Access</td>
+              <td><span class="pill onetime">One-time</span></td>
+              <td class="amount">₹1,50,000</td>
+            </tr>
+            <tr>
+              <td class="donor-name">
+                Sunita Devi Trust<small>Local philanthropy</small>
+              </td>
+              <td>Farmer Skilling Cohort</td>
+              <td><span class="pill onetime">One-time</span></td>
+              <td class="amount">₹75,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
 
-      (() => {
-        const now = new Date();
-        const opts = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-        document.getElementById('currentDate').textContent = now.toLocaleDateString('en-IN', opts);
-      })();
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/org-loader.js"></script>
+  <script>
+    function formatINR(n) {
+      const symbol = window.orgSettings ? (window.orgSettings.currency || '₹') : '₹';
+      return symbol + Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+    }
 
-      document.getElementById("logoutBtn").addEventListener("click", async () => {
-        await logout();
+    function stageClass(stage) {
+      const map = { 'Sown': '', 'Sprouting': '', 'Growing': '', 'Harvested': '' };
+      return stage ? stage.toLowerCase() : '';
+    }
+
+    (async () => {
+      const user = await getCurrentUser();
+      if (!user) {
         window.location.href = "/login.html";
+        return;
+      }
+      document.getElementById("userName").textContent = user.name;
+    })();
+
+    (() => {
+      const now = new Date();
+      const opts = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+      document.getElementById('currentDate').textContent = now.toLocaleDateString('en-IN', opts);
+    })();
+
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      await logout();
+      window.location.href = "/login.html";
+    });
+
+    document.querySelectorAll(".nav-item").forEach((item) => {
+      item.addEventListener("click", () => {
+        document.querySelectorAll(".nav-item").forEach((i) => i.classList.remove("active"));
+        item.classList.add("active");
       });
+    });
 
-      document.querySelectorAll(".nav-item").forEach((item) => {
-        item.addEventListener("click", () => {
-          document.querySelectorAll(".nav-item").forEach((i) => i.classList.remove("active"));
-          item.classList.add("active");
-        });
-      });
+    // Nav items now use href directly - no need for click mapping
 
-      // Ensure nav clicks map to pages
-      document.querySelectorAll('.nav-item').forEach((item, idx) => {
-        if (idx === 0) return;
-        const pages = ['programs.html', 'beneficiaries.html', 'donors.html', 'reports.html', 'settings.html'];
-        if (pages[idx - 1]) {
-          item.addEventListener('click', () => {
-            window.location.href = pages[idx - 1];
-          });
-        }
-      });
+    // Load live dashboard data
+    (async () => {
+      try {
+        await window.orgSettingsPromise;
+        const data = await getDashboard();
+        const s = data.stats;
 
-      // Load live dashboard data
-      (async () => {
-        try {
-          const data = await getDashboard();
-          const s = data.stats;
+        // Stat strip
+        const statEls = document.querySelectorAll('.stat-value');
+        if (statEls[0]) statEls[0].textContent = Number(s.beneficiaries).toLocaleString('en-IN');
+        if (statEls[1]) statEls[1].textContent = (window.orgSettings ? (window.orgSettings.currency || '₹') : '₹') + Number(s.funds_raised).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+        if (statEls[2]) statEls[2].textContent = s.districts;
+        if (statEls[3]) statEls[3].textContent = s.open_cases;
 
-          // Stat strip
-          const statEls = document.querySelectorAll('.stat-value');
-          if (statEls[0]) statEls[0].textContent = Number(s.beneficiaries).toLocaleString('en-IN');
-          if (statEls[1]) statEls[1].textContent = formatINR(s.funds_raised).replace('₹', '₹');
-          if (statEls[2]) statEls[2].textContent = s.districts;
-          if (statEls[3]) statEls[3].textContent = s.open_cases;
+        const statDeltas = document.querySelectorAll('.stat-delta');
+        if (statDeltas[0]) statDeltas[0].textContent = `▲ ${s.active_beneficiaries} active`;
+        if (statDeltas[2]) statDeltas[2].textContent = `▲ ${s.volunteers} field volunteers`;
+        if (statDeltas[3]) statDeltas[3].textContent = s.open_cases > 0 ? `▼ needs review: ${s.open_cases} flagged` : 'No flagged cases';
 
-          const statDeltas = document.querySelectorAll('.stat-delta');
-          if (statDeltas[0]) statDeltas[0].textContent = `▲ ${s.active_beneficiaries} active`;
-          if (statDeltas[2]) statDeltas[2].textContent = `▲ ${s.volunteers} field volunteers`;
-          if (statDeltas[3]) statDeltas[3].textContent = s.open_cases > 0 ? `▼ needs review: ${s.open_cases} flagged` : 'No flagged cases';
-
-          // Programs
-          const harvestPanel = document.querySelector('.harvest-panel');
-          if (harvestPanel && data.programs && data.programs.length) {
-            let html = `<div class="section-head"><h2>Programs — sown to harvested</h2><a href="programs.html">View all programs</a></div>`;
-            data.programs.forEach(p => {
-              html += `
+        // Programs
+        const harvestPanel = document.querySelector('.harvest-panel');
+        if (harvestPanel && data.programs && data.programs.length) {
+          harvestPanel.innerHTML = `<div class="section-head"><h2>Programs — sown to harvested</h2><a href="programs.html">View all programs</a></div>`
+            + data.programs.map(p => `
                 <div class="harvest-row">
                   <div class="harvest-name">${p.name}<small>${p.villages} villages${p.district ? ' · ' + p.district : ''}</small></div>
                   <div class="harvest-track"><div class="harvest-fill" style="width: ${p.progress_pct}%"></div></div>
                   <div><div class="harvest-pct">${p.progress_pct}%</div><div class="harvest-stage">${p.stage}</div></div>
-                </div>`;
-            });
-            harvestPanel.innerHTML = html;
-          }
+                </div>`).join('');
+        }
 
-          // Recent donations table
-          const tbody = document.querySelector('table tbody');
-          if (tbody && data.recent_donations && data.recent_donations.length) {
-            tbody.innerHTML = data.recent_donations.map(d => `
+        // Recent donations table
+        const tbody = document.querySelector('table tbody');
+        if (tbody && data.recent_donations && data.recent_donations.length) {
+          tbody.innerHTML = data.recent_donations.map(d => `
               <tr>
                 <td class="donor-name">${d.donor_name}${d.program_name ? '<small>' + d.program_name + '</small>' : ''}</td>
                 <td>${d.program_name || '—'}</td>
                 <td><span class="pill ${d.type === 'recurring' ? 'recurring' : 'onetime'}">${d.type === 'recurring' ? 'Recurring' : 'One-time'}</span></td>
                 <td class="amount">${formatINR(d.amount)}</td>
               </tr>`).join('');
-          }
-
-          // Field activity feed
-          const feedPanel = document.querySelector('.grid-2 .panel:last-child');
-          if (feedPanel && data.recent_reports && data.recent_reports.length) {
-            const head = feedPanel.querySelector('.section-head');
-            let feedHtml = `<div class="section-head"><h2>Field activity</h2><a href="reports.html">View log</a></div>`;
-            data.recent_reports.forEach(r => {
-              const color = r.status === 'flag' ? 'var(--clay)' : 'var(--marigold)';
-              feedHtml += `
-                <div class="feed-item">
-                  <div class="feed-dot" style="background: ${color}"></div>
-                  <div><div class="feed-text"><b>${r.author_name}</b> ${r.summary}</div><span class="feed-time">${r.submitted_at}</span></div>
-                </div>`;
-            });
-            feedPanel.innerHTML = feedHtml;
-          }
-
-          // Monthly donation chart (rough approximation from total)
-          const chart = document.querySelector('.chart');
-          if (chart && data.recent_donations) {
-            const months = ['Dec','Jan','Feb','Mar','Apr','May','Jun','Jul'];
-            const total = s.funds_raised;
-            const perMonth = Math.max(total / months.length, 1000);
-            const bars = chart.querySelectorAll('.bar');
-            bars.forEach((bar, i) => {
-              const factor = 0.3 + Math.random() * 0.7;
-              const h = Math.min(Math.round((perMonth * factor / total) * 100), 100);
-              bar.style.height = Math.max(h, 10) + '%';
-              if (i === 5) bar.classList.add('peak');
-            });
-          }
-        } catch (err) {
-          console.error('Failed to load dashboard data:', err);
         }
-      })();
-    </script>
-  </body>
+
+        // Field activity feed
+        const feedContainer = document.getElementById('feedContainer');
+        if (feedContainer && data.recent_reports && data.recent_reports.length) {
+          feedContainer.innerHTML = data.recent_reports.map(r => `
+              <div class="feed-item">
+                <div class="feed-dot" style="background: ${r.status === 'flag' ? 'var(--clay)' : 'var(--moss)'}"></div>
+                <div><div class="feed-text"><b>${r.author_name}</b> ${r.summary}</div><span class="feed-time">${r.submitted_at}</span></div>
+              </div>`).join('');
+        }
+
+        // Pending tasks stat
+        if (statEls[4]) statEls[4].textContent = s.pending_tasks || 0;
+
+        // Upcoming tasks widget
+        const taskContainer = document.getElementById('upcomingTasks');
+        if (taskContainer && data.upcoming_tasks && data.upcoming_tasks.length) {
+          taskContainer.innerHTML = data.upcoming_tasks.map(t => `
+              <div class="feed-item">
+                <div class="feed-dot" style="background: ${t.priority === 'high' ? 'var(--clay)' : t.priority === 'medium' ? 'var(--marigold)' : 'var(--moss)'}"></div>
+                <div>
+                  <div class="feed-text"><b>${t.title}</b> ${t.assigned_to ? '— ' + t.assigned_to : ''}</div>
+                  <span class="feed-time">${t.due_date || ''} ${t.program_name ? '· ' + t.program_name : ''}</span>
+                </div>
+              </div>`).join('');
+        } else if (taskContainer) {
+          taskContainer.innerHTML = '<p style="color:#888;font-size:.85rem;padding:.5rem 0">No pending tasks.</p>';
+        }
+
+        // Announcements widget
+        const annContainer = document.getElementById('announcementsWidget');
+        if (annContainer && data.recent_announcements && data.recent_announcements.length) {
+          annContainer.innerHTML = data.recent_announcements.map(a => `
+              <div class="feed-item">
+                <div class="feed-dot" style="background: ${a.priority === 'high' ? 'var(--clay)' : 'var(--moss)'}"></div>
+                <div>
+                  <div class="feed-text"><b>${a.title}</b></div>
+                  <span class="feed-time">${a.created_at}</span>
+                </div>
+              </div>`).join('');
+        } else if (annContainer) {
+          annContainer.innerHTML = '<p style="color:#888;font-size:.85rem;padding:.5rem 0">No announcements.</p>';
+        }
+
+        // Chart defaults
+        Chart.defaults.color = '#556b60';
+        Chart.defaults.font.family = "'IBM Plex Sans', sans-serif";
+
+        // Monthly donation bar chart
+        const ctx1 = document.getElementById('donationChart')?.getContext('2d');
+        if (ctx1 && data.monthly_donations && data.monthly_donations.length) {
+          const months = data.monthly_donations.map(d => {
+            const [y, m] = d.month.split('-');
+            const names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return names[parseInt(m) - 1] + " '" + y.slice(2);
+          });
+          const values = data.monthly_donations.map(d => d.total);
+          new Chart(ctx1, {
+            type: 'bar',
+            data: {
+              labels: months,
+              datasets: [{
+                label: `Donations (${window.orgSettings ? (window.orgSettings.currency || '₹') : '₹'})`,
+                data: values,
+                backgroundColor: values.map(v => v === Math.max(...values) ? '#E3A23C' : '#6F8F72'),
+                borderRadius: 4
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { display: false } },
+              scales: {
+                y: { beginAtZero: true, ticks: { callback: v => (window.orgSettings ? (window.orgSettings.currency || '₹') : '₹') + (v / 1000).toFixed(0) + 'K' } }
+              }
+            }
+          });
+        }
+
+        // Donations by program pie/doughnut chart
+        const ctx2 = document.getElementById('programChart')?.getContext('2d');
+        if (ctx2 && data.donations_by_program && data.donations_by_program.length) {
+          const colors = ['#6F8F72', '#E3A23C', '#C75B3A', '#7A9BB5', '#B8A47A', '#8B6F59'];
+          new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+              labels: data.donations_by_program.map(d => d.program),
+              datasets: [{
+                data: data.donations_by_program.map(d => d.total),
+                backgroundColor: colors.slice(0, data.donations_by_program.length)
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                legend: { position: 'right', labels: { boxWidth: 12, padding: 12 } }
+              }
+            }
+          });
+        }
+
+        // Beneficiaries by program bar chart
+        const ctx3 = document.getElementById('beneficiaryChart')?.getContext('2d');
+        if (ctx3 && data.beneficiaries_by_program && data.beneficiaries_by_program.length) {
+          const colors = ['#6F8F72', '#7A9BB5', '#E3A23C', '#C75B3A', '#B8A47A'];
+          new Chart(ctx3, {
+            type: 'bar',
+            data: {
+              labels: data.beneficiaries_by_program.map(d => d.program),
+              datasets: [{
+                label: 'Beneficiaries',
+                data: data.beneficiaries_by_program.map(d => d.count),
+                backgroundColor: colors.slice(0, data.beneficiaries_by_program.length),
+                borderRadius: 4
+              }]
+            },
+            options: {
+              responsive: true,
+              plugins: { legend: { display: false } },
+              scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+            }
+          });
+        }
+
+      } catch (err) {
+        console.error('Failed to load dashboard data:', err);
+      }
+    })();
+  </script>
+</body>
+
 </html>

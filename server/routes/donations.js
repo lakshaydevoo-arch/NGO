@@ -23,8 +23,9 @@ router.post('/', requireAuth, (req, res) => {
   const name = donor_name || db.get('SELECT name FROM donors WHERE id = ?', [donor_id])?.name || 'Unknown';
   db.run('INSERT INTO donations (donor_id, program_id, donor_name, amount, type, note) VALUES (?, ?, ?, ?, ?, ?)',
     [donor_id || null, program_id || null, name, amount, type || 'one-time', note || '']);
-  const row = db.get('SELECT last_insert_rowid() AS id');
-  const donation = db.get('SELECT dn.*, p.name AS program_name FROM donations dn LEFT JOIN programs p ON dn.program_id = p.id WHERE dn.id = ?', [row.id]);
+  const rows = db.all('SELECT id FROM donations ORDER BY id DESC LIMIT 1');
+  if (!rows.length) return res.status(500).json({ error: 'Failed to create donation' });
+  const donation = db.get('SELECT dn.*, p.name AS program_name FROM donations dn LEFT JOIN programs p ON dn.program_id = p.id WHERE dn.id = ?', [rows[0].id]);
   res.status(201).json({ donation });
 });
 
@@ -34,3 +35,4 @@ router.delete('/:id', requireAuth, (req, res) => {
 });
 
 module.exports = router;
+

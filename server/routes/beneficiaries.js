@@ -28,8 +28,9 @@ router.post('/', requireAuth, (req, res) => {
   if (!name) return res.status(400).json({ error: 'Name is required' });
   db.run('INSERT INTO beneficiaries (name, age, gender, village, district, program_id, contact, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
     [name, age || null, gender || '', village || '', district || '', program_id || null, contact || '', status || 'active']);
-  const row = db.get('SELECT last_insert_rowid() AS id');
-  const beneficiary = db.get('SELECT * FROM beneficiaries WHERE id = ?', [row.id]);
+  const rows = db.all('SELECT id FROM beneficiaries ORDER BY id DESC LIMIT 1');
+  if (!rows.length) return res.status(500).json({ error: 'Failed to create beneficiary' });
+  const beneficiary = db.get('SELECT * FROM beneficiaries WHERE id = ?', [rows[0].id]);
   res.status(201).json({ beneficiary });
 });
 

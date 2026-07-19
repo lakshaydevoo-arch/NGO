@@ -22,8 +22,9 @@ router.post('/register', async (req, res) => {
 
     const password_hash = await bcrypt.hash(password, 10);
     db.run('INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)', [name, email, password_hash]);
-    const row = db.get('SELECT last_insert_rowid() AS id');
-    const userId = row.id;
+    const rows = db.all('SELECT id FROM users ORDER BY id DESC LIMIT 1');
+    if (!rows.length) return res.status(500).json({ error: 'Registration failed' });
+    const userId = rows[0].id;
 
     req.session.userId = userId;
 

@@ -21,8 +21,9 @@ router.post('/', requireAuth, (req, res) => {
   if (!author_name || !summary) return res.status(400).json({ error: 'Author name and summary are required' });
   db.run('INSERT INTO field_reports (author_name, district, village, program_id, summary, status) VALUES (?, ?, ?, ?, ?, ?)',
     [author_name, district || '', village || '', program_id || null, summary, status || 'ok']);
-  const row = db.get('SELECT last_insert_rowid() AS id');
-  const report = db.get('SELECT r.*, p.name AS program_name FROM field_reports r LEFT JOIN programs p ON r.program_id = p.id WHERE r.id = ?', [row.id]);
+  const rows = db.all('SELECT id FROM field_reports ORDER BY id DESC LIMIT 1');
+  if (!rows.length) return res.status(500).json({ error: 'Failed to create report' });
+  const report = db.get('SELECT r.*, p.name AS program_name FROM field_reports r LEFT JOIN programs p ON r.program_id = p.id WHERE r.id = ?', [rows[0].id]);
   res.status(201).json({ report });
 });
 
@@ -43,3 +44,4 @@ router.delete('/:id', requireAuth, (req, res) => {
 });
 
 module.exports = router;
+

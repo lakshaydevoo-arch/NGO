@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Settings — Sammriddhi Trust</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.form-card{background:#fff;border-radius:12px;padding:2rem;width:100%;max-width:600px;border:1px solid var(--border)}
+.form-card label{display:block;font-size:.85rem;font-weight:600;margin-top:1.2rem;margin-bottom:.3rem;color:var(--moss-deep)}
+.form-card input,.form-card select,.form-card textarea{width:100%;padding:.6rem .8rem;border:1.5px solid #ddd;border-radius:6px;font-family:inherit;font-size:.9rem}
+.btn{background:var(--moss);color:#fff;border:none;padding:.6rem 1.5rem;border-radius:6px;cursor:pointer;font-family:inherit;font-weight:500;margin-top:1.5rem}
+.btn:hover{background:var(--moss-deep)}
+.alert{padding:1rem;border-radius:8px;margin-bottom:1rem;font-size:.9rem;display:none}
+.alert.success{background:#e0f0e0;color:#2a6e3a;border:1px solid #c2e0c2}
+.alert.error{background:#fde8e8;color:#b13a2a;border:1px solid #f8b8b8}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+        <path d="M15 27C15 27 6 21.5 6 13.5C6 8.8 9.6 5 15 3C20.4 5 24 8.8 24 13.5C24 21.5 15 27 15 27Z" fill="#E3A23C" />
+        <path d="M15 27V13" stroke="#33473C" stroke-width="1.6" stroke-linecap="round" />
+        <path d="M15 18C15 18 10 16.5 10 12.5" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+        <path d="M15 22C15 22 20 20.5 20 16" stroke="#33473C" stroke-width="1.4" stroke-linecap="round" />
+      </svg>
+      <div class="brand-name">Sammriddhi Trust<span>Foundation</span></div>
+    </div>
+
+    <nav>
+      <a class="nav-item" href="index.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="1" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="1" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/><rect x="9" y="9" width="6" height="6" rx="1.2" stroke="currentColor" stroke-width="1.3"/></svg>Overview</a>
+      <a class="nav-item" href="programs.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 13V6l6-3 6 3v7" stroke="currentColor" stroke-width="1.3"/><path d="M6 13V9h4v4" stroke="currentColor" stroke-width="1.3"/></svg>Programs</a>
+      <a class="nav-item" href="beneficiaries.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="5" r="2.6" stroke="currentColor" stroke-width="1.3"/><path d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="1.3"/></svg>Beneficiaries</a>
+      <a class="nav-item" href="donors.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2c2.5 1 4 3 4 5.5C12 11 8 14 8 14S4 11 4 7.5C4 5 5.5 3 8 2Z" stroke="currentColor" stroke-width="1.3"/></svg>Donors</a>
+      <a class="nav-item" href="finance.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M1 4h14v10H1V4Z" stroke="currentColor" stroke-width="1.3"/><path d="M4 4V2h8v2" stroke="currentColor" stroke-width="1.3"/><path d="M5 8h6M5 10.5h4" stroke="currentColor" stroke-width="1.2"/></svg>Finance</a>
+      <a class="nav-item" href="volunteers.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="6" cy="4.5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 13c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4" stroke="currentColor" stroke-width="1.3"/><circle cx="11.5" cy="5" r="1.8" stroke="currentColor" stroke-width="1.3"/><path d="M10 12c0-1.8 1-3 3-3s3 1.2 3 3" stroke="currentColor" stroke-width="1.3"/></svg>Volunteers</a>
+      <a class="nav-item" href="tasks.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 3h12v10H2V3Z" stroke="currentColor" stroke-width="1.3"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.3"/></svg>Tasks</a>
+      <a class="nav-item" href="reports.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 2h7l3 3v9H3V2Z" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 8h5M5.5 10.5h5" stroke="currentColor" stroke-width="1.2"/></svg>Field Reports</a>
+      <a class="nav-item" href="notice.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2v12M3 6h10M3 10h10" stroke="currentColor" stroke-width="1.3"/></svg>Notice Board</a>
+      <a class="nav-item" href="inventory.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 7h12M2 10h12" stroke="currentColor" stroke-width="1.2"/></svg>Inventory</a>
+      <a class="nav-item" href="events.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v4l2.5 1.5" stroke="currentColor" stroke-width="1.3"/></svg>Events</a>
+      <a class="nav-item" href="impact.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 14V8l4-3 5 4 3-5v10H2Z" stroke="currentColor" stroke-width="1.3"/><circle cx="6" cy="5" r="1" fill="currentColor"/><circle cx="11" cy="9" r="1" fill="currentColor"/></svg>Impact Tracker</a>
+      <a class="nav-item active" href="settings.html"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M8 1v2M8 13v2M13 8h2M1 8h2M11.5 4.5l1.5-1.5M3 13l1.5-1.5M11.5 11.5L13 13M3 3l1.5 1.5" stroke="currentColor" stroke-width="1.3"/></svg>Settings</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <strong>UTTAR PRADESH REGION</strong>
+      <button type="button" id="logoutBtn" class="logout-btn">Log out</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="topbar">
+      <div>
+        <div class="eyebrow">Administration</div>
+        <h1>Organisation Settings</h1>
+      </div>
+      <div class="topbar-meta"><span id="currentDate"></span></div>
+    </div>
+
+    <div class="alert success" id="alertSuccess">Settings updated successfully! Please reload the page to apply styling.</div>
+    <div class="alert error" id="alertError">Failed to save settings.</div>
+
+    <div class="form-card">
+      <form id="settingsForm">
+        <label for="orgName">Organisation Name</label>
+        <input type="text" id="orgName" required />
+
+        <label for="orgTagline">Tagline / Slogan</label>
+        <input type="text" id="orgTagline" />
+
+        <label for="orgRegion">Active Region / State</label>
+        <input type="text" id="orgRegion" required />
+
+        <label for="orgDistricts">District Count</label>
+        <input type="number" id="orgDistricts" required />
+
+        <label for="orgVolunteers">Volunteer Count</label>
+        <input type="number" id="orgVolunteers" required />
+
+        <label for="orgCurrency">Currency Symbol</label>
+        <select id="orgCurrency">
+          <option value="₹">₹ (INR)</option>
+          <option value="$">$ (USD)</option>
+          <option value="€">€ (EUR)</option>
+          <option value="£">£ (GBP)</option>
+        </select>
+
+        <button type="submit" class="btn">Save Configuration</button>
+      </form>
+    </div>
+  </main>
+</div>
+
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/org-loader.js"></script>
+<script>
+async function loadForm() {
+  try {
+    const res = await api('GET', '/api/settings');
+    const settings = {};
+    res.settings.forEach(s => { settings[s.key] = s.value; });
+
+    if (settings.name) document.getElementById('orgName').value = settings.name;
+    if (settings.tagline) document.getElementById('orgTagline').value = settings.tagline;
+    if (settings.region) document.getElementById('orgRegion').value = settings.region;
+    if (settings.district_count) document.getElementById('orgDistricts').value = settings.district_count;
+    if (settings.volunteer_count) document.getElementById('orgVolunteers').value = settings.volunteer_count;
+    if (settings.currency) document.getElementById('orgCurrency').value = settings.currency;
+  } catch (err) {
+    console.error('Failed to load form details:', err);
+  }
+}
+
+document.getElementById('settingsForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const alertSuccess = document.getElementById('alertSuccess');
+  const alertError = document.getElementById('alertError');
+  alertSuccess.style.display = 'none';
+  alertError.style.display = 'none';
+
+  const body = {
+    name: document.getElementById('orgName').value,
+    tagline: document.getElementById('orgTagline').value,
+    region: document.getElementById('orgRegion').value,
+    district_count: document.getElementById('orgDistricts').value,
+    volunteer_count: document.getElementById('orgVolunteers').value,
+    currency: document.getElementById('orgCurrency').value
+  };
+
+  try {
+    await api('POST', '/api/settings', body);
+    alertSuccess.style.display = 'block';
+    await loadOrgSettings(); // reload branding dynamically
+  } catch (err) {
+    alertError.textContent = err.message || 'Failed to save settings.';
+    alertError.style.display = 'block';
+  }
+});
+
+(async () => {
+  const user = await getCurrentUser();
+  if (!user) { window.location.href = '/login.html'; return; }
+  document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-IN', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+  await loadForm();
+})();
+</script>
+</body>
+</html>
